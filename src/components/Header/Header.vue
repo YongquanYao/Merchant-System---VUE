@@ -1,0 +1,68 @@
+<template>
+    <div class="header">
+        <div class="logo">
+            <a-spin size="large"></a-spin>
+        </div>
+        <div class="left">
+            <router-link to='/home'><h1>{{title}}</h1></router-link>
+        </div>
+        <div class="right">
+            <router-link to='/home/info'><a-avatar style="backgroundColor:#1890ff" icon="user" /></router-link>
+            <span>{{username}}</span>
+        </div>
+    </div>
+    <!-- <h1>{{ msg }}</h1> -->
+</template>
+
+<script>
+export default {
+  name: 'Header',
+  data(){
+      return{
+        title: 'Merchant System',
+        username: 'Raymond'
+      }
+  }
+}
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style  scoped>
+    .header{
+        display: flex;
+    }
+    .logo{
+        margin-left:45px 
+    }
+    .left{
+        width: 18%;
+        position: relative;
+        text-align: center;
+    }
+    .left::after{
+                position: absolute;
+                content: "";
+                border-top: 40px solid #fff;
+                border-bottom: 40px solid transparent;
+                border-right: 40px solid transparent;
+                border-left: 40px solid transparent;
+                left: 50%;
+                top:60px;
+                transform: translateX(-50%);
+    }
+    .left h1{
+        font-size:30px;
+        font-weight: 500;
+         color: #1890ff;
+    }
+    .right{
+         width: 75%;
+         text-align: right;
+         align-items: center;
+         margin-right: 30px;
+    }
+    .right span{
+        margin-left: 10px;
+        font-size:18px;
+    }
+</style>
