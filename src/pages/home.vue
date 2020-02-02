@@ -1,6 +1,12 @@
 <template>
    <!-- This is the homepage -->
     <div class="home">
+            <div class='circle-left-top'></div>
+            <div class='circle-left-top2'></div>
+            <div class='circle-middle1'></div>
+            <div class='circle-middle2'></div>
+            <div class='circle-bottom-left'></div>
+            <div class='circle-right-top'></div>
             <div class="home-title"> 
                 <h1 class="title">{{title}}</h1>
                 <!-- <div>
@@ -85,7 +91,7 @@
                 that.fContent = that.inContent;
             }else{
                 if(" " == str.charAt(j)){
-                    that.inContent += '&ensp;';
+                    that.inContent += ' ';
                 }else if("`" == str.charAt(j)){
                     that.inContent += "</br>";
                 }else{
@@ -177,6 +183,9 @@ button{
    margin-top: 40px;
    border: 1px solid #1890ff;
 }
+button:hover{
+  transform: scale(1.04);
+}
 .home-img{
     width: 600px;
     height: 600px;
@@ -193,6 +202,66 @@ button{
   100%{
     transform: scale(0.8);
   }
+}
+
+ /* 灰色 background-color: rgb(104, 103, 103,0.6); */
+.circle-left-top{
+  width:140px;
+  height:140px;
+  background-color: rgba(24,144,255, 1);
+  border-bottom-right-radius:  100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.circle-left-top2{
+  width: 100px;
+  height:100px;
+  position: absolute;
+  background-color: rgba(24,144,255, 0.6);
+  top: 5%;
+  left: 3%;
+  border-radius: 50%;
+}
+
+.circle-middle1{
+  width: 80px;
+  height:80px;
+  position: absolute;
+  background-color: rgba(247, 19, 159, 0.4);
+  top: 35%;
+  left: 3%;
+  border-radius: 50%;
+  z-index: -1;
+}
+.circle-middle2{
+  width: 50px;
+  height:50px;
+  position: absolute;
+  background-color: rgba(247, 19, 159, 0.1);
+  top: 31%;
+  left: 7%;
+  border-radius: 50%;
+}
+.circle-bottom-left{
+  width:140px;
+  height:140px;
+  background-color: rgba(247, 19, 159, 0.6);
+  border-top-right-radius:  100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.circle-right-top{
+  width:110px;
+  height:110px;
+  background-color: rgba(247, 19, 159, 0.5);
+  border-bottom-left-radius:  100%;
+  position: absolute;
+  top: 0;
+  right:0;
 }
 
 </style>
