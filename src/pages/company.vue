@@ -6,6 +6,9 @@
       <a-layout-content>
         <CompanyContent></CompanyContent>
       </a-layout-content>
+      <a-layout-footer>
+          <Footer></Footer>
+      </a-layout-footer>
     </a-layout>
   </div>
 </template>
@@ -13,12 +16,14 @@
 <script>
 import Header from '../components/Header/Header'
 import CompanyContent from '../components/Company-Content/Company-Content'
+import Footer from '../components/Footer/Footer'
 
 export default {
   name: 'company',
   components: {
     Header,
     CompanyContent,
+    Footer
   }
 }
 </script>

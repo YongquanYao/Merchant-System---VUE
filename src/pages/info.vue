@@ -6,6 +6,9 @@
       <a-layout-content>
         <InfoContent></InfoContent>
       </a-layout-content>
+      <a-layout-footer>
+        <Footer></Footer>
+      </a-layout-footer>
     </a-layout>
   </div>
 </template>
@@ -13,13 +16,15 @@
 <script>
 import Header from '../components/Header/Header'
 import InfoContent from '../components/Info-Content/Info-Content'
+import Footer from '../components/Footer/Footer'
 
 export default {
   name: 'home',
   components: {
     Header,
     InfoContent,
-  }
+    Footer,
+  },
 }
 </script>
 

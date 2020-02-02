@@ -206,13 +206,13 @@ button:hover{
 
  /* 灰色 background-color: rgb(104, 103, 103,0.6); */
 .circle-left-top{
-  width:140px;
-  height:140px;
+  width:180px;
+  height:180px;
   background-color: rgba(24,144,255, 1);
-  border-bottom-right-radius:  100%;
+  border-radius: 100%;
   position: absolute;
-  top: 0;
-  left: 0;
+  top: -3%;
+  left: -3%;
 }
 
 .circle-left-top2{
@@ -220,8 +220,8 @@ button:hover{
   height:100px;
   position: absolute;
   background-color: rgba(24,144,255, 0.6);
-  top: 5%;
-  left: 3%;
+  top: 6%;
+  left: 4%;
   border-radius: 50%;
 }
 
