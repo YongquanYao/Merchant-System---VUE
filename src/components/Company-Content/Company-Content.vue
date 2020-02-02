@@ -98,7 +98,7 @@
 </script>
 <style>
   .content{
-      margin-top:40px;
+    margin-top:40px;
     background-color: #fff;
     box-shadow: 0px 1px 10px 5px rgba(17,17,17,0.1);
   }

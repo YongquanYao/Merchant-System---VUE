@@ -2,6 +2,8 @@
 <!-- This is the Infopage -->
   <div id="home">
     <a-layout>
+       <a-layout-sider/>
+    <a-layout>
       <a-layout-header><Header></Header></a-layout-header>
       <a-layout-content>
         <InfoContent></InfoContent>
@@ -9,6 +11,7 @@
       <a-layout-footer>
         <Footer></Footer>
       </a-layout-footer>
+    </a-layout>
     </a-layout>
   </div>
 </template>
@@ -48,8 +51,6 @@ export default {
 #home .ant-layout-content{
   padding: 0 40px;
   flex: 1;
+  background-color: #f0f2f5;
 }
-
-
-
 </style>

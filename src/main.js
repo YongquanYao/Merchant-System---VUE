@@ -4,6 +4,7 @@ import router from './router';
 import 'ant-design-vue/dist/antd.css';
 import Button from 'ant-design-vue/lib/button';
 import Layout from 'ant-design-vue/lib/layout';
+import Menu from 'ant-design-vue/lib/menu';
 import Avatar from 'ant-design-vue/lib/avatar';
 import Table from 'ant-design-vue/lib/table';
 import Card from 'ant-design-vue/lib/card';
@@ -30,6 +31,7 @@ Vue.use(Input);
 Vue.use(Popconfirm);
 Vue.use(Message);
 Vue.use(Notification);
+Vue.use(Menu);
 
 Vue.config.productionTip = false
 Vue.prototype.$message = Message;

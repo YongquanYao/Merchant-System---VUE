@@ -108,7 +108,7 @@ const columns = [
       address:'104 E 25th St, New York, NY 10010',
     },
      {
-      key: '1',
+      key: '2',
       name: 'Raymond Yao1',
       ssn: "12-34-5678",
       score: "888",
@@ -118,7 +118,7 @@ const columns = [
       address:'104 E 25th St, New York, NY 10010',
     },
      {
-      key: '1',
+      key: '3',
       name: 'Raymond Yao2',
       ssn: "12-34-5678",
       score: "888",
@@ -128,7 +128,7 @@ const columns = [
       address:'104 E 25th St, New York, NY 10010',
     },
      {
-      key: '1',
+      key: '4',
       name: 'Raymond Yao3',
       ssn: "12-34-5678",
       score: "888",
@@ -138,7 +138,7 @@ const columns = [
       address:'104 E 25th St, New York, NY 10010',
     },
      {
-      key: '1',
+      key: '5',
       name: 'Raymond Yao4',
       ssn: "12-34-5678",
       score: "888",
@@ -148,7 +148,7 @@ const columns = [
       address:'104 E 25th St, New York, NY 10010',
     },
      {
-      key: '1',
+      key: '6',
       name: 'Raymond Yao5',
       ssn: "12-34-5678",
       score: "888",
@@ -158,7 +158,7 @@ const columns = [
       address:'104 E 25th St, New York, NY 10010',
     },
      {
-      key: '1',
+      key: '7',
       name: 'Raymond Yao6',
       ssn: "12-34-5678",
       score: "888",
@@ -168,7 +168,7 @@ const columns = [
       address:'104 E 25th St, New York, NY 10010',
     },
      {
-      key: '1',
+      key: '8',
       name: 'Raymond Yao7',
       ssn: "12-34-5678",
       score: "888",
@@ -178,7 +178,7 @@ const columns = [
       address:'104 E 25th St, New York, NY 10010',
     },
      {
-      key: '1',
+      key: '9',
       name: 'Raymond Yao8',
       ssn: "12-34-5678",
       score: "888",

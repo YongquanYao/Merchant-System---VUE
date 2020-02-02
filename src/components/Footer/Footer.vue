@@ -15,6 +15,7 @@
 </script>
 
 <style lang="css" scoped>
+
     div{
         text-align: center;
     }

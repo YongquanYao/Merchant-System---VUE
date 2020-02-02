@@ -1,7 +1,7 @@
 <template>
     <div class="header">
         <div class="logo">
-            <a-spin size="large"></a-spin>
+            <a-spin size="large"/>
         </div>
         <div class="left">
             <router-link to='/home'><h1>{{title}}</h1></router-link>
@@ -32,10 +32,10 @@ export default {
         display: flex;
     }
     .logo{
-        margin-left:45px 
+        margin-left:45px;
     }
     .left{
-        width: 18%;
+        width: 20%;
         position: relative;
         text-align: center;
     }
@@ -59,7 +59,7 @@ export default {
          width: 75%;
          text-align: right;
          align-items: center;
-         margin-right: 30px;
+         margin-right: 40px;
     }
     .right span{
         margin-left: 10px;
