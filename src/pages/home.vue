@@ -229,7 +229,8 @@ button:hover{
   width: 80px;
   height:80px;
   position: absolute;
-  background-color: rgba(247, 19, 159, 0.4);
+  /* background-color: rgba(247, 19, 159, 0.4); */
+  background-color: rgba(255, 209, 6, 0.4);
   top: 35%;
   left: 3%;
   border-radius: 50%;
@@ -239,7 +240,7 @@ button:hover{
   width: 50px;
   height:50px;
   position: absolute;
-  background-color: rgba(247, 19, 159, 0.1);
+  background-color: rgba(255, 209, 6, 0.1);
   top: 31%;
   left: 7%;
   border-radius: 50%;
@@ -247,7 +248,7 @@ button:hover{
 .circle-bottom-left{
   width:140px;
   height:140px;
-  background-color: rgba(247, 19, 159, 0.6);
+  background-color: rgba(255, 209, 6, 0.6);
   border-top-right-radius:  100%;
   position: absolute;
   bottom: 0;
@@ -257,7 +258,7 @@ button:hover{
 .circle-right-top{
   width:110px;
   height:110px;
-  background-color: rgba(247, 19, 159, 0.5);
+  background-color: rgba(255, 209, 6, 0.5);
   border-bottom-left-radius:  100%;
   position: absolute;
   top: 0;
