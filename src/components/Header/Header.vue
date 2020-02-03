@@ -1,7 +1,10 @@
 <template>
+<a-layout-header>
     <div class="header">
         <div class="logo">
+            <router-link to='/home'>
             <a-spin size="large"/>
+            </router-link>
         </div>
         <div class="left">
             <router-link to='/home'><h1>{{title}}</h1></router-link>
@@ -11,7 +14,8 @@
             <span>{{username}}</span>
         </div>
     </div>
-    <!-- <h1>{{ msg }}</h1> -->
+</a-layout-header>
+    
 </template>
 
 <script>
@@ -28,6 +32,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style  scoped>
+   .ant-layout-header{
+    padding: 0; 
+    background:#fff;
+  }
     .header{
         display: flex;
     }

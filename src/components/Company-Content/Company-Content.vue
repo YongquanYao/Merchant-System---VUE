@@ -1,4 +1,5 @@
 <template>
+<a-layout-content>
   <div class="content">
      <a-card title="Company Detail" style="width: 100%">
     <a-button type="primary" slot="extra"> <router-link to='/home/info'> View My Info</router-link></a-button>
@@ -30,6 +31,7 @@
     </a-table>
      </a-card>
   </div>
+</a-layout-content>
 </template>
 <script>
   import EditableCell from './EditableCell';
@@ -96,7 +98,12 @@
     },
   };
 </script>
-<style>
+<style scoped>
+  .ant-layout-content{
+  padding: 0 40px;
+  flex: 1;
+  background-color: #f0f2f5;
+  }
   .content{
     margin-top:40px;
     background-color: #fff;

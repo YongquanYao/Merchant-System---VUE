@@ -1,7 +1,9 @@
 <template>
+<a-layout-footer>
     <div>
         {{msg}}
     </div>
+</a-layout-footer>
 </template>
 
 <script>
