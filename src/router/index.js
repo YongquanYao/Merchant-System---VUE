@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import info from '../pages/info.vue'
 import comnpany from '../pages/company.vue'
+import cloud from '../pages/cloud.vue'
 
 
 Vue.use(Router)
@@ -28,6 +29,11 @@ const routes = [
     // merchant's companys info
     path:'/home/company',
     component: comnpany
+  },
+  {
+    // merchant's companys info
+    path:'/home/cloud',
+    component: cloud
   },
   
 ]

@@ -9,20 +9,28 @@
       </div>
       <a-menu theme="light" mode="inline" :defaultSelectedKeys="['1']">
         <a-menu-item key="1">
-          <a-icon type="home" />
+          <router-link to='/home'>
+          <a-icon type="home"/>
           <span>Home</span>
+          </router-link>
         </a-menu-item>
         <a-menu-item key="2">
+          <router-link to='/home/info'>
           <a-icon type="user" />
-          <span>User Interface</span>
+            <span>User Interface</span>
+          </router-link>
         </a-menu-item>
         <a-menu-item key="3">
-          <a-icon type="wallet" />
-          <span>Video</span>
+          <router-link to='/home/company'>
+            <a-icon type="shop"/>
+            <span>Company</span>
+          </router-link>
         </a-menu-item>
         <a-menu-item key="4">
-          <a-icon type="upload" />
-          <span>Upload</span>
+          <router-link to='/home/company'>
+            <a-icon type="table" />
+            <span>Table</span>
+           </router-link>
         </a-menu-item>
         <a-menu-item key="5">
           <a-icon type="rise" />
