@@ -10,6 +10,7 @@
             <router-link to='/home'><h1>{{title}}</h1></router-link>
         </div>
         <div class="right">
+            <span class="time">{{time}}</span>
             <router-link to='/home/info'><a-avatar style="backgroundColor:#1890ff" icon="user" /></router-link>
             <span>{{username}}</span>
         </div>
@@ -19,13 +20,24 @@
 </template>
 
 <script>
+import {formateDate} from "../../utils/dateUtils"
+
 export default {
   name: 'Header',
   data(){
       return{
         title: 'Merchant System',
-        username: 'Raymond'
+        username: 'Raymond',
+        time: formateDate(Date.now())
       }
+  },
+  mounted(){
+      this.timer = setInterval(()=>{
+          this.time = formateDate(Date.now())
+      },1000)
+  },
+  created(){
+      clearInterval(this.timer)
   }
 }
 </script>
@@ -68,6 +80,12 @@ export default {
          text-align: right;
          align-items: center;
          margin-right: 40px;
+    }
+    .right .time{
+        font-size: 15px;
+        margin-right: 15px;
+        font-weight: 500;
+        color:#6db7fc;
     }
     .right span{
         margin-left: 10px;

@@ -27,18 +27,18 @@
           </router-link>
         </a-menu-item>
         <a-menu-item key="4">
-          <router-link to='/home/company'>
             <a-icon type="table" />
             <span>Table</span>
-           </router-link>
         </a-menu-item>
         <a-menu-item key="5">
           <a-icon type="rise" />
           <span>Analysis</span>
         </a-menu-item>
         <a-menu-item key="6">
-          <a-icon type="cloud" />
-          <span>Cloud</span>
+          <router-link to='/home/cloud'>
+            <a-icon type="cloud" />
+            <span>Cloud</span>
+           </router-link>
         </a-menu-item>
         <a-menu-item key="7">
           <a-icon type="appstore" />
@@ -69,7 +69,7 @@
 }
 .ant-layout-sider .logo {
     height: 36px;
-    font-size: 28px;
+    font-size: 24px;
     display: flex;
     justify-content: center;
     margin: 15px 0;

@@ -9,12 +9,6 @@
             <div class='circle-right-top'></div>
             <div class="home-title"> 
                 <h1 class="title">{{title}}</h1>
-                <!-- <div>
-                <span>{{slogen1}}</span>
-                </div>
-                <div>
-                <span>{{slogen2}}</span>
-                </div> -->
                 <div class="show" v-html="fContent"></div>
                 <div>
                 <router-link to="/home/info">

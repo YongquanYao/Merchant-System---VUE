@@ -35,17 +35,5 @@ export default {
 }
 </script>
 
-<style >
-#layout {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  height: 100%;
-  display: flex;
-  flex-direction:column;
-}
-#layout .ant-layout{
-  background-color: rgba(192, 192, 192, 0.2)
-}
-
+<style>
 </style>

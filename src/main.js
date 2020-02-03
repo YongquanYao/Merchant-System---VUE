@@ -16,6 +16,7 @@ import Popconfirm from 'ant-design-vue/lib/popconfirm';
 import Spin from 'ant-design-vue/lib/spin';
 import Message from 'ant-design-vue/lib/message';
 import Notification from 'ant-design-vue/lib/notification';
+import Empty from 'ant-design-vue/lib/empty';
 
 
 Vue.use(Spin);
@@ -32,6 +33,7 @@ Vue.use(Popconfirm);
 Vue.use(Message);
 Vue.use(Notification);
 Vue.use(Menu);
+Vue.use(Empty);
 
 Vue.config.productionTip = false
 Vue.prototype.$message = Message;

@@ -34,6 +34,7 @@ export default {
 }
 </script>
 
+<!--Genernal layout Setting for the /home/xxx page -->
 <style>
 #layout {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
