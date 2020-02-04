@@ -11,9 +11,17 @@
                 <h1 class="title">{{title}}</h1>
                 <div class="show" v-html="fContent"></div>
                 <div>
-                <router-link to="/home/info">
-                     <a-button @click="openNotification">{{startButton}}<a-icon type="arrow-right"></a-icon></a-button>
-                </router-link>
+                <!-- <router-link to="/home/info"> -->
+                <!-- openNotification  -->
+                     <a-button @click="login">{{startButton}}<a-icon type="arrow-right"></a-icon></a-button>
+                      <Login
+                        ref="loginForm"
+                        :confirmLoading="confirmLoading"
+                        :visible="visible"
+                        @cancel="handleCancel"
+                        @create="handleLogin"
+                     />
+                <!-- </router-link>  -->
                 </div>
             </div>
             <div class="home-img">
@@ -24,8 +32,12 @@
 
 
 <script>
+    import Login from "../components/Login/Login"
     export default {
         name: 'home',
+        components: {
+            Login,
+        },
         props: {
 
         writeTime: {
@@ -49,23 +61,26 @@
         data(){
             return{
                 title: 'Merchant System',
-                // slogen1: 'Your best partner,',
-                // slogen2: 'the most powerful system in the world.',
                 startButton: 'Get Started',
-
                 fContent:"",
                 inContent:"",
                 mContent:"",
                 course:"|",
-                hasCourse:true
+                hasCourse:true,
+                visible: false,
+                confirmLoading: false,
+                username: ""
             }
         },
+
+
         //页面加载时
          mounted(){
             this.showContent();
             this.courseTimeOut();
         },
         methods: {
+
           showContent(){
             var that = this;
             var data = that.content;
@@ -126,16 +141,49 @@
                 }
             },200)
         },
-        // Notification pop up when enter the homepage
-        openNotification() {
-        this.$notification.open({
-          message: 'Introduction Notification',
-          description:
-            "Welcome to the Merchant System! You can View/Edit your personal and company information .",
-            duration: 6,
-          icon: <a-icon type="smile" style="color: #108ee9" />,
-        });
-      },
+
+        login(){
+            this.visible = true
+        },
+
+      //Login Form
+        showLogin(){
+            this.visible = true;
+        },
+        handleCancel(){
+            this.visible = false;
+           
+        },
+
+        handleLogin(){
+            this.confirmLoading =true;
+            const form = this.$refs.loginForm.form;
+            form.validateFields((err, values) => {
+                if (err) {
+                return;
+                }
+                window.console.log('Received values of form: ', values);
+                form.resetFields();
+                this.visible = false;
+
+                // 把数据传到localStorage key的名字是username 
+                // 有json格式时需要JSON.stringify()转化为字符串
+                // localStorage.setItem('username',JSON.stringify(values.username));
+                localStorage.setItem('username',values.username);
+                localStorage.setItem('password',values.password);
+            });
+              // 跳转到主页
+                window.location.replace('/#/home/info')
+        
+              // Notification pop up when enter the homepage  到主页后弹出简介
+                    this.$notification.open({
+                        message: 'Introduction Notification',
+                        description:
+                            "Welcome to the Merchant System! You can View/Edit your personal and company information .",
+                            duration: 6,
+                        icon: <a-icon type="smile" style="color: #108ee9" />,
+                        });
+         }
     },
 }
 </script>

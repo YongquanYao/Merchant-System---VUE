@@ -17,6 +17,7 @@ import Spin from 'ant-design-vue/lib/spin';
 import Message from 'ant-design-vue/lib/message';
 import Notification from 'ant-design-vue/lib/notification';
 import Empty from 'ant-design-vue/lib/empty';
+import Checkbox from 'ant-design-vue/lib/checkbox';
 
 
 Vue.use(Spin);
@@ -34,6 +35,7 @@ Vue.use(Message);
 Vue.use(Notification);
 Vue.use(Menu);
 Vue.use(Empty);
+Vue.use(Checkbox);
 
 Vue.config.productionTip = false
 Vue.prototype.$message = Message;

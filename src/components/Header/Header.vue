@@ -27,7 +27,7 @@ export default {
   data(){
       return{
         title: 'Merchant System',
-        username: 'Raymond',
+        username: '',
         time: formateDate(Date.now())
       }
   },
@@ -38,6 +38,7 @@ export default {
   },
   created(){
       clearInterval(this.timer)
+      this.username = localStorage.getItem('username')
   }
 }
 </script>
