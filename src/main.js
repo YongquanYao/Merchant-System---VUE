@@ -18,6 +18,8 @@ import Message from 'ant-design-vue/lib/message';
 import Notification from 'ant-design-vue/lib/notification';
 import Empty from 'ant-design-vue/lib/empty';
 import Checkbox from 'ant-design-vue/lib/checkbox';
+import Confirm from 'ant-design-vue/lib/modal/confirm'
+
 
 
 Vue.use(Spin);
@@ -37,9 +39,13 @@ Vue.use(Menu);
 Vue.use(Empty);
 Vue.use(Checkbox);
 
+
+
 Vue.config.productionTip = false
 Vue.prototype.$message = Message;
 Vue.prototype.$notification = Notification;
+//use in script JS
+Vue.prototype.$confirm = Confirm;
 
 new Vue({
   router,

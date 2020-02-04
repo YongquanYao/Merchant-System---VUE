@@ -44,8 +44,8 @@
           <a-icon type="appstore" />
           <span>Application</span>
         </a-menu-item>
-        <a-menu-item key="8">
-          <a-icon type="logout" />
+        <a-menu-item key="8" @click="logout">
+          <a-icon type="logout"/>
           <span>Logout</span>
         </a-menu-item>
       </a-menu>
@@ -59,6 +59,28 @@
         collapsed: true,
         span: false,
       }
+    },
+    methods:{
+      logout(){
+        this.$confirm({
+          title: 'Are you sure to logout?',
+          content: h => <div style="color: orange;">this is a confirmation</div>,
+          okText: 'Yes',
+          okType: 'danger',
+          cancelText: 'No',
+          onOk(){
+              window.location.replace('/#/home')  
+              localStorage.removeItem('username');
+              //发送ajax请求
+
+            //   return new Promise((resolve, reject) => {
+            //   setTimeout(Math.random() > 0.5 ? resolve : reject, 1000); 
+            //   //跳转回主页
+            // }).catch(() => window.console.log('Oops errors!'));
+          }
+        });
+      }
+
     }
   }
 </script>

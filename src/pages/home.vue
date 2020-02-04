@@ -174,7 +174,8 @@
             });
               // 跳转到主页
                 window.location.replace('/#/home/info')
-        
+             // 提示
+                this.$message.success('login successfully');
               // Notification pop up when enter the homepage  到主页后弹出简介
                     this.$notification.open({
                         message: 'Introduction Notification',

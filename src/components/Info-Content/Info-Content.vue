@@ -12,8 +12,9 @@
       <span slot="customTitle-email"><a-icon type="mail" theme="twoTone"/> Email</span>
       <span slot="customTitle-phone"><a-icon type="phone" theme="twoTone"/> Phone</span>
       <span slot="customTitle-address"><a-icon type="home" theme="twoTone"/> Address</span>
+    <!-- 选择可以改变的col -->
     <template
-      v-for="col in ['name', 'ssn', 'birth','email','phone','address']"
+      v-for="col in ['ssn', 'birth','email','phone','address']"
       :slot="col"
       slot-scope="text, record"
     >
