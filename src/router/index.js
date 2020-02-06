@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import info from '../pages/info.vue'
 import comnpany from '../pages/company.vue'
 import cloud from '../pages/cloud.vue'
+import setting from '../pages/setting.vue'
 
 
 Vue.use(Router)
@@ -35,6 +36,11 @@ const routes = [
     path:'/home/cloud',
     component: cloud
   },
+  {
+    // merchant's user login information
+    path:'/home/setting',
+    component: setting
+  }
   
 ]
 const router = new Router({routes})

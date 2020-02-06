@@ -33,7 +33,7 @@
           </a-input>
         </a-form-item>
         <a-form-item label='Password'>
-          <a-input
+          <a-input-password
             type = 'password' placeholder = 'Password'
             v-decorator="[
             'password',
@@ -43,7 +43,7 @@
             ]"
           >
             <a-icon slot="prefix" type="lock" style="color:rgba(0,0,0,.25)" />
-          </a-input>
+          </a-input-password>
         </a-form-item>
          <a-form-item>
          <a-checkbox

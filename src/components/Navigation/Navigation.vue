@@ -41,8 +41,10 @@
            </router-link>
         </a-menu-item>
         <a-menu-item key="7">
-          <a-icon type="appstore" />
-          <span>Application</span>
+          <router-link to='/home/setting'>
+            <a-icon type="setting"/>
+            <span>Setting</span>
+          </router-link>
         </a-menu-item>
         <a-menu-item key="8" @click="logout">
           <a-icon type="logout"/>
@@ -64,7 +66,7 @@
       logout(){
         this.$confirm({
           title: 'Are you sure to logout?',
-          content: h => <div style="color: orange;">this is a confirmation</div>,
+          content: <div style="color: orange;">this is a confirmation</div>,
           okText: 'Yes',
           okType: 'danger',
           cancelText: 'No',
