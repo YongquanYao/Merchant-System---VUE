@@ -1,25 +1,58 @@
 <template>
         <a-layout-content>
             <div class='card-one'>
-                 <a-card title="Setting">
+                 <a-card title="User Setting">
+                     <a-avatar style="backgroundColor:#1890ff" icon="user" size="large"/>
                      <div style="font-size: 20px; margin-bottom: 20px">
-                         {{username}}
+                        <span>Hi, {{username}}!</span> 
                     </div>
-                     <!-- <a-button type="link" @click="handleDetail">
-                      Detail Change
-                    </a-button> -->
-                     <a-button type="primary">
+                     <a-button type="link" @click="handleDetail">
                      Change Detail
                     </a-button>
-                    <a-button type="primary" @click="handlePassword">
+                    <a-button type="link" @click="handlePassword">
                      Change Password
                     </a-button>
                  </a-card>
             </div>   
             <!-- transition表示加动画 然后name代表class 在css里再添加animation -->
             <transition name="slide-fade">
-            <div class="card-two" v-show="cardtwoShow">
+            <div class="card-password" v-show="cardPasswordShow">
                  <a-card title="Change Password">
+                    <a-form layout='vertical' :form="form">
+                        <a-form-item label= 'Change Password'>  
+                            <a-input-password type ='password' placeholder = 'Old Password'
+                                 v-decorator="['password1',{rules: [{ required: true, message: 'Please input the old password' }],
+                                 }]">
+                            <a-icon slot='prefix' type="lock" style="color:rgba(0,0,0,.25)"/>
+                            </a-input-password>
+                        </a-form-item>
+                        <a-form-item>  
+                            <a-input-password type = 'password' placeholder = 'New Password'
+                                 v-decorator="['password2',{rules: [{ validator: this.validatePwd}],
+                                 }]">
+                            <a-icon slot='prefix' type="lock" style="color:rgba(0,0,0,.25)"/>
+                            </a-input-password>
+                        </a-form-item>
+                        <a-form-item>  
+                            <a-input-password type = 'password' placeholder = 'Confirm Password'
+                                 v-decorator="['password3',{rules: [{ required: true, message: 'Please confirm the password' }],
+                                 }]">
+                            <a-icon slot='prefix' type="lock" style="color:rgba(0,0,0,.25)"/>
+                            </a-input-password>
+                        </a-form-item>
+                        <a-form-item>
+                            <a-button type="primary" @click="changePassword">
+                                Submit
+                            </a-button>
+                        </a-form-item>
+                    </a-form>
+                 </a-card>
+            </div>
+            </transition>   
+
+             <transition name="slide-fade">
+            <div class="card-detail" v-show="cardtDetailShow">
+                 <a-card title="Change Detail">
                     <a-form layout='vertical' :form="form">
                         <a-form-item label= 'Change Password'>  
                             <a-input-password type ='password' placeholder = 'Old Password'
@@ -50,31 +83,43 @@
                     </a-form>
                  </a-card>
             </div>
-            </transition>     
+            </transition>    
         </a-layout-content>
 
 </template>
 
 <script>
     export default {
+        
         data(){
             return {
-              cardtwoShow : false,
-              username: localStorage.getItem('username')
+              cardPasswordShow : false,
+              cardtDetailShow : false,
+              username: localStorage.getItem('username'),
             }
         },
          beforeCreate() {
-            this.form = this.$form.createForm(this, { name: 'changepassword' });
+           this.form = this.$form.createForm(this, { name: 'changepassword' });
+        },
+        created(){
+                
         },
         methods:{
+            
             handlePassword(){
-                if(this.cardtwoShow){
-                    this.cardtwoShow = false
+                if(this.cardPasswordShow){
+                    this.cardPasswordShow = false
                 }
                 else{
-                    this.cardtwoShow = true
+                    this.cardPasswordShow = true
                 }
-            }
+            },
+            handleDetail(){
+                this.cardtDetailShow = !this.cardtDetailShow 
+            },
+            changePassword(){
+                this.form
+            },
         }
     }
 </script>
@@ -87,15 +132,15 @@
   .card-one{
     margin-top:40px;
     background-color: #f0f2f5;
-    width:40%;
+    width:45%;
     box-shadow: 0px 1px 10px 5px rgba(17,17,17,0.1);
      float: left;
 
   }
-  .card-two{
+  .card-password, .card-detail{
     margin-top:40px;
     background-color: #f0f2f5;
-    width:35%;
+    width:40%;
     box-shadow: 0px 1px 10px 5px rgba(17,17,17,0.1);
     float: right;
   }
