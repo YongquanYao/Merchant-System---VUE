@@ -8,6 +8,9 @@
                      <!-- <a-button type="link" @click="handleDetail">
                       Detail Change
                     </a-button> -->
+                     <a-button type="primary">
+                     Change Detail
+                    </a-button>
                     <a-button type="primary" @click="handlePassword">
                      Change Password
                     </a-button>
