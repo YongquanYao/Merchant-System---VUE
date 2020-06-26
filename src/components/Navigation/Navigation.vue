@@ -1,11 +1,11 @@
 <template>
     <a-layout-sider :trigger="null" collapsible v-model="collapsed">
-        <div class="logo" >
+        <div class="logo"  @click="()=> {collapsed = !collapsed, span =!span}" >
           <a-icon
           class="trigger"
           :type="collapsed ? 'menu-unfold' : 'menu-fold'"
-          @click="()=> {collapsed = !collapsed, span =!span}"
-        /><span v-show="span">Menu</span>    
+         
+        /><span v-show="span">Main menu</span>    
       </div>
       <a-menu theme="light" mode="inline" :defaultSelectedKeys="['1']">
         <a-menu-item key="1">
@@ -93,15 +93,20 @@
 }
 .ant-layout-sider .logo {
     height: 36px;
-    font-size: 24px;
+    font-size: 22px;
     display: flex;
     justify-content: center;
     margin: 15px 0;
-    color: gray;
+    color: black;
   }
   
 .ant-layout-sider .logo span{
-  margin-left: 10px; 
-  font-size: 20px;
+   margin-left: 10px; 
+  font-size: 18px;
+   cursor: pointer;
+   width: 100px;
+}
+.logo{
+  cursor: pointer;
 }
 </style>

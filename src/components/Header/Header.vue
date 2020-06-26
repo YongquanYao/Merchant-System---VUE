@@ -3,16 +3,16 @@
     <div class="header">
         <div class="logo">
             <router-link to='/home'>
-            <a-spin size="large"/>
+                <a-spin size="default"/>
             </router-link>
         </div>
         <div class="left">
-            <router-link to='/home'><h1>{{title}}</h1></router-link>
+            <router-link to='/home/info'><h1>{{title}}</h1></router-link>
         </div>
         <div class="right">
             <span class="time">{{time}}</span>
-            <router-link to='/home/info'><a-avatar style="backgroundColor:#1890ff" icon="user" /></router-link>
-            <span>{{username}}</span>
+            <router-link to='/home/info'><a-avatar style="backgroundColor:#1890ff">{{initial}}</a-avatar></router-link>
+            <!-- <span class="username">{{username}}</span> -->
         </div>
     </div>
 </a-layout-header>
@@ -28,7 +28,8 @@ export default {
       return{
         title: 'Merchant System',
         username: '',
-        time: formateDate(Date.now())
+        time: formateDate(Date.now()),
+        initial: ''
       }
   },
   mounted(){
@@ -39,6 +40,8 @@ export default {
   created(){
       clearInterval(this.timer)
       this.username = localStorage.getItem('username')
+      this.initial = localStorage.getItem('username').split('')[0]
+
   }
 }
 </script>
@@ -54,9 +57,9 @@ export default {
     }
     .logo{
         margin-left:45px;
+        padding-right: 15px;
     }
     .left{
-        width: 20%;
         position: relative;
         text-align: center;
     }
@@ -72,24 +75,27 @@ export default {
                 transform: translateX(-50%);
     }
     .left h1{
-        font-size:30px;
+        font-size:26px;
         font-weight: 500;
          color: #1890ff;
     }
     .right{
-         width: 75%;
+         flex: 1;
          text-align: right;
          align-items: center;
          margin-right: 40px;
     }
     .right .time{
-        font-size: 15px;
+        font-size: 14px;
         margin-right: 15px;
         font-weight: 500;
-        color:#6db7fc;
+        /* color:#6db7fc; */
     }
     .right span{
         margin-left: 10px;
         font-size:18px;
+    }
+    .right .username{
+         font-size:16px;
     }
 </style>
