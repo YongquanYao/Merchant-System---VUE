@@ -27,8 +27,10 @@
           </router-link>
         </a-menu-item>
         <a-menu-item key="4">
+          <router-link to='/home/table'>
             <a-icon type="table" />
             <span>Table</span>
+              </router-link>
         </a-menu-item>
         <a-menu-item key="5">
           <a-icon type="rise" />

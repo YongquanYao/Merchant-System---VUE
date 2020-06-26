@@ -4,7 +4,7 @@ import info from '../pages/info.vue'
 import comnpany from '../pages/company.vue'
 import cloud from '../pages/cloud.vue'
 import setting from '../pages/setting.vue'
-
+import table from '../pages/table.vue'
 
 Vue.use(Router)
 
@@ -35,6 +35,11 @@ const routes = [
     // merchant's companys info
     path:'/home/cloud',
     component: cloud
+  },
+  {
+    // merchant's companys info
+    path:'/home/table',
+    component: table
   },
   {
     // merchant's user login information
