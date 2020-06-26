@@ -1,51 +1,31 @@
 <template>
-    <div id="layout">
-    <a-layout>
-          <Navigation></Navigation>
-      <a-layout>
-          <Header></Header>
-            <a-layout-content>
-                <div class="content">
-                    <a-card style="height: 300px">
-                        <div>
-                            <a-button class="editable-add-btn" @click="handleAdd">
-                            Add
-                            </a-button>
-                            <a-table bordered :data-source="dataSource" :columns="columns">
-                            <!-- <template slot="name" slot-scope="text, record">
-                                <editable-cell :text="text" @change="onCellChange(record.key, 'name', $event)" />
-                            </template> -->
-                            <template slot="operation" slot-scope="text, record">
-                                <a-popconfirm
-                                v-if="dataSource.length"
-                                title="Sure to delete?"
-                                @confirm="() => onDelete(record.key)"
-                                >
-                                <a href="javascript:;">Delete</a>
-                                </a-popconfirm>
-                            </template>
-                            </a-table>
-                        </div>
-                    </a-card>
+        <div class="content">
+            <a-card style="height: 300px">
+                <div>
+                    <a-button class="editable-add-btn" @click="handleAdd">
+                    Add
+                    </a-button>
+                    <a-table bordered :data-source="dataSource" :columns="columns">
+                    <!-- <template slot="name" slot-scope="text, record">
+                        <editable-cell :text="text" @change="onCellChange(record.key, 'name', $event)" />
+                    </template> -->
+                    <template slot="operation" slot-scope="text, record">
+                        <a-popconfirm
+                        v-if="dataSource.length"
+                        title="Sure to delete?"
+                        @confirm="() => onDelete(record.key)"
+                        >
+                        <a href="javascript:;">Delete</a>
+                        </a-popconfirm>
+                    </template>
+                    </a-table>
                 </div>
-            </a-layout-content>
-          <Footer></Footer>
-      </a-layout>
-    </a-layout>
-  </div>
+            </a-card>
+        </div>
 </template>
 
 <script>
-    import Header from '../components/Header/Header'
-    import Footer from '../components/Footer/Footer'
-    import Navigation from '../components/Navigation/Navigation' 
-
     export default {
-        components:{
-            Header,
-            Footer,
-            Navigation
-        },
         data(){
             return{
                 dataSource: [
@@ -90,11 +70,6 @@
 </script>
 
 <style scoped>
- .ant-layout-content{
-  padding: 0 40px;
-  flex: 1;
-  background-color: #f0f2f5;
-  }
   .content{
     margin-top:40px;
     background-color: #fff;

@@ -1,30 +1,15 @@
 <template>
 <!-- This is the Infopage -->
-  <div id="layout">
-    <a-layout>
-          <Navigation></Navigation>
-      <a-layout>
-          <Header></Header>
           <InfoContent></InfoContent>
-          <Footer></Footer>
-      </a-layout>
-    </a-layout>
-  </div>
 </template>
 
 <script>
-import Header from '../components/Header/Header'
 import InfoContent from '../components/Info-Content/Info-Content'
-import Footer from '../components/Footer/Footer'
-import Navigation from '../components/Navigation/Navigation'
 
 export default {
   name: 'info',
   components: {
-    Header,
     InfoContent,
-    Footer,
-    Navigation,
   },
   data(){
     return{

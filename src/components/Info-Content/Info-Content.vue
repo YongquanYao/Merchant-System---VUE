@@ -1,5 +1,4 @@
 <template>
-<a-layout-content>
     <div class="content">
      <a-card title="Information Detail" style="width: 100%">
     
@@ -46,7 +45,6 @@
     </a-card>
     
     </div>
-</a-layout-content>
 </template>
 
 <script>
@@ -256,11 +254,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .ant-layout-content{
-    padding: 0 40px;
-    flex: 1;
-    background-color: #f0f2f5;
-  }
   .content{
     margin-top:40px;
     background-color: #fff;

@@ -1,5 +1,5 @@
 <template>
-    <a-layout-sider :trigger="null" collapsible v-model="collapsed">
+    <a-layout-sider :trigger="null" collapsible v-model="collapsed" theme="dark">
         <div class="logo"  @click="()=> {collapsed = !collapsed, span =!span}" >
           <a-icon
           class="trigger"
@@ -60,8 +60,8 @@
     export default {
     data(){
       return{
-        collapsed: true,
-        span: false,
+        collapsed: false,
+        span: true,
       }
     },
     methods:{
@@ -73,7 +73,7 @@
           okType: 'danger',
           cancelText: 'No',
           onOk(){
-              window.location.replace('/#/home')  
+              window.location.replace('/')  
               localStorage.removeItem('username');
               //发送ajax请求
 

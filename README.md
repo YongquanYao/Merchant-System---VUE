@@ -29,4 +29,8 @@ yarn run start
 yarn run build
 ```
 
+## ------ Authorization --------  ##
+username/ Email : Admin
+password: admin
+
 
