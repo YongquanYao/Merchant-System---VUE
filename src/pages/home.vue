@@ -1,311 +1,174 @@
 <template>
-   <!-- This is the homepage -->
-    <div class="home">
-            <div class='circle-left-top'></div>
-            <div class='circle-left-top2'></div>
-            <div class='circle-middle1'></div>
-            <div class='circle-middle2'></div>
-            <div class='circle-bottom-left'></div>
-            <div class='circle-right-top'></div>
-            <div class="home-title"> 
-                <h1 class="title">{{title}}</h1>
-                <div class="show" v-html="fContent"></div>
-                <div>
-                <!-- <router-link to="/home/info"> -->
-                <!-- openNotification  -->
-                     <a-button @click="login">{{startButton}}<a-icon type="arrow-right"></a-icon></a-button>
-                      <Login
-                        ref="loginForm"
-                        :confirmLoading="confirmLoading"
-                        :visible="visible"
-                        @cancel="handleCancel"
-                        @create="handleLogin"
-                     />
-                <!-- </router-link>  -->
+    <div>
+        <a-row type="flex" justify="space-between" >
+         <a-col :span="4">
+            <a-card class="user"> 
+                <a-avatar :size="84"  src="https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png" icon="user" />
+                <div class="avatar_username">
+                    {{username}}
                 </div>
-            </div>
-            <div class="home-img">
-                <img src="../assets/image/homepage.png" alt="background-logo" title="provided by Raymond">
-            </div>
+                <div class="avatar_slogen">
+                    <span>好好学习,天天向上</span>
+                </div>
+                <div class="user_info">
+                    <p>
+                        <a-icon type="idcard" style="margin-right:8px" />
+                        xxx技术有限公司
+                    </p>
+                    <p>
+                        <a-icon type="apartment" style="margin-right:8px"/>
+                        技术体验部
+                    </p>
+                    <p>
+                        <a-icon type="environment"  style="margin-right:8px"/>
+                        广州, 中国
+                    </p>
+                </div>
+                <a-divider dashed/>
+                <div class="info_section">
+                    <div>团队</div>
+                    <span>高级前端开发Team</span>
+                </div>
+                 <a-divider dashed/>
+                 <div class="info_section">
+                    <div>标签</div>
+                    <span> <a-tag color="blue">Vue</a-tag></span>                    
+                    <span> <a-tag>React</a-tag></span>                    
+                    <span> <a-tag>Node</a-tag></span>
+                    <template v-if="newTag !== null && newTag !=='' ">
+                        <span><a-tag>{{newTag}}</a-tag></span>
+                    </template>
+                    <a-input
+                        v-if="tagInputVisible"
+                        ref="input"
+                        type="text"
+                        size="small"
+                        :style="{ width: '78px' }"
+                        :value="tagInputValue"
+                        @change="handleInputChange"
+                        @blur="handleInputConfirm"
+                        @keyup.enter="handleInputConfirm"
+                    />
+                    <span>
+                    <a-tag style="background: #fff; borderStyle: dashed;" @click="showTagInput">
+                    <a-icon type="plus" />
+                    </a-tag>   
+                    </span>                
+                </div>
+            </a-card>
+          </a-col>
+          <a-col :span="17">
+              <a-card class="tabList">
+                <a-tabs default-active-key="1" @change="callback">
+                    <a-tab-pane key="1" tab="消息 (0)">
+                        <a-empty 
+                            description="当前没有任何消息"
+                        />
+                    </a-tab-pane>
+                    <a-tab-pane key="2" tab="任务(0)" force-render>
+                        <a-empty 
+                            description="当前任务为空"
+                        />
+                    </a-tab-pane>
+                    <a-tab-pane key="3" tab="会议 / 项目 (0）">
+                        <a-empty 
+                            description="当前没有会议和项目记录"
+                        />
+                    </a-tab-pane>
+                </a-tabs>
+              </a-card>
+               <!-- <a-card class="calendar"> 
+                <a-calendar 
+                    :fullscreen="false" 
+                    @panelChange="onPanelChange" 
+                />
+            </a-card> -->
+          </a-col>
+        </a-row>
     </div>
 </template>
 
-
 <script>
-    import Login from "../components/Login/Login"
     export default {
-        name: 'home',
-        components: {
-            Login,
-        },
-        props: {
-
-        writeTime: {
-
-            type:Number,
-
-            default: 100
-
-        },
-
-        content:{
-            type:Object,
-            default: function () {
-                return {
-                    str1:'Your best partner,',
-                    str2:'the most powerful system in the world.',
-                }
-            }
-        }
-    },
         data(){
             return{
-                title: 'Merchant System',
-                startButton: 'Get Started',
-                fContent:"",
-                inContent:"",
-                mContent:"",
-                course:"|",
-                hasCourse:true,
-                visible: false,
-                confirmLoading: false,
-                username: ""
+                username:'',
+                tagInputVisible: false,
+                tagInputValue: '',
+                newTag: null
             }
         },
-
-
-        //页面加载时
-         mounted(){
-            this.showContent();
-            this.courseTimeOut();
-        },
-        methods: {
-
-          showContent(){
-            var that = this;
-            var data = that.content;
-            var mData = "";
-            for (var i in data){
-                mData += data[i] + '`';
-            }
-            that.mContent = mData;
-            that.contentTimeOut(0);
-        },
-          handStr(j){
-            var that = this;
-            var count = j;
-            var str = that.mContent;
-            count++;
-            if(count >= str.length){
-                that.hasCourse = false;
-                that.fContent = that.inContent;
-            }else{
-                if(" " == str.charAt(j)){
-                    that.inContent += ' ';
-                }else if("`" == str.charAt(j)){
-                    that.inContent += "</br>";
-                }else{
-                    that.inContent += str.charAt(j);
-                }
-                that.fContent = that.inContent + that.course;
-                that.contentTimeOut(count);
+        methods:{
+            panelChange(value){
+                alert(value)
+            },
+            showTagInput() {
+                // 显示tagInput
+                this.tagInputVisible =true
+                // 用nextTick选中input框
+                this.$nextTick(function() {
+                    this.$refs.input.focus();
+                });
+            },
+            handleInputConfirm(){
+                this.tagInputVisible =false
+                this.newTag = this.tagInputValue
+                
+            },
+            handleInputChange(e){
+                this.tagInputValue = e.target.value
             }
         },
-        contentTimeOut(value){
-
-            var that = this;
-
-            setTimeout(function () {
-
-                that.handStr(value)
-
-            },that.writeTime)
-
+        created(){
+            this.username = localStorage.getItem('username')
         },
-        //输入符号的速度
-        courseTimeOut(){
-            var that = this
-            setTimeout(function () {
-                if(that.course.length > 0){
-                    that.fContent = that.inContent + "";
-                    that.course = "";
-                    that.courseTimeOut();
-                }else{
-                    if(that.hasCourse){
-                        that.fContent = that.inContent + "|";
-                        that.course = "|";
-                        that.courseTimeOut();
-                    }else{
-                        that.fContent = that.inContent;
-                    }
-                }
-            },200)
-        },
-
-        login(){
-            this.visible = true
-        },
-
-      //Login Form
-        showLogin(){
-            this.visible = true;
-        },
-        handleCancel(){
-            this.visible = false;
-           
-        },
-
-        handleLogin(){
-            this.confirmLoading =true;
-            const form = this.$refs.loginForm.form;
-            form.validateFields((err, values) => {
-                if (err) {
-                return;
-                }
-                window.console.log('Received values of form: ', values);
-                form.resetFields();
-                this.visible = false;
-
-                // 把数据传到localStorage key的名字是username 
-                // 有json格式时需要JSON.stringify()转化为字符串
-                // localStorage.setItem('username',JSON.stringify(values.username));
-                localStorage.setItem('username',values.username);
-                localStorage.setItem('password',values.password);
-            });
-              // 跳转到主页
-                window.location.replace('/#/home/info')
-             // 提示
-                this.$message.success('login successfully');
-              // Notification pop up when enter the homepage  到主页后弹出简介
-                    this.$notification.open({
-                        message: 'Introduction Notification',
-                        description:
-                            "Welcome to the Merchant System! You can View/Edit your personal and company information .",
-                            duration: 6,
-                        icon: <a-icon type="smile" style="color: #108ee9" />,
-                        });
-         }
-    },
-}
+    }
 </script>
 
-<style  scoped>
-.home{
-    height: 100%;
-    display:flex;
-    justify-content: space-around;
-    align-items: center;
+<style scoped>
+.user{
+    display: block;
+    margin-top:40px;
+    width: 320px;
+    height: 550px;
+    text-align: center;
 }
-.home-titile{
-    display: flex;
-    flex-direction: column;
+.avatar_username{
+    padding-top: 20px;
+    font-size: 19px;
+    font-weight: 500;
 }
-.home-title h1:hover{
-    transform: scale(1.1);
-    color: #1890ff;
+.avatar_slogen{
+    padding-top: 5px;
+    font-size: 13px;
+    color: #6d6d6d;
 }
-
-.home-title h1{
-    font-size: 70px;
+.user_info{
+    text-align: start;
+    padding: 35px 10px 0px 10px;
+    font-size: 13px;
+}
+.info_section{
+    text-align: start;
+    font-size: 13px;
+}
+.info_section div{
     font-weight: 600;
-    transition: 1s;
-    cursor: pointer;
+    padding-bottom: 5px;
 }
-.home-title .show{
-    font-size:25px;
-    font-weight: 400;
-    color:rgba(17,17,17,0.4);
+.ant-tag{
+    margin-bottom: 5px;
 }
-button{
-   color: #fff;
-   background-color:#1890ff;
-   border-radius: 20px;
-   height: 45px;
-   width: 200px;
-   font-weight: 700;
-   font-size:16px;
-   margin-top: 40px;
-   border: 1px solid #1890ff;
+.tabList{
+    display: block;
+    margin-top:40px;
+    min-width: 821px;
+    height: 250px;
 }
-button:hover{
-  transform: scale(1.04);
-}
-.home-img{
-    width: 600px;
-    height: 600px;
-    transition: 2s;
-    animation: img 4500ms linear infinite;
-}
-@keyframes img {
-    0%{
-    transform: scale(0.8);
-  }
-  50%{
-    transform: scale(1.0);
-  }
-  100%{
-    transform: scale(0.8);
-  }
-}
-
- /* 灰色 background-color: rgb(104, 103, 103,0.6); */
-.circle-left-top{
-  width:180px;
-  height:180px;
-  background-color: rgba(24,144,255, 1);
-  border-radius: 100%;
-  position: absolute;
-  top: -3%;
-  left: -3%;
-}
-
-.circle-left-top2{
-  width: 100px;
-  height:100px;
-  position: absolute;
-  background-color: rgba(24,144,255, 0.6);
-  top: 6%;
-  left: 4%;
-  border-radius: 50%;
-}
-
-.circle-middle1{
-  width: 80px;
-  height:80px;
-  position: absolute;
-  /* background-color: rgba(247, 19, 159, 0.4); */
-  background-color: rgba(255, 209, 6, 0.4);
-  top: 35%;
-  left: 3%;
-  border-radius: 50%;
-  z-index: -1;
-}
-.circle-middle2{
-  width: 50px;
-  height:50px;
-  position: absolute;
-  background-color: rgba(255, 209, 6, 0.1);
-  top: 31%;
-  left: 7%;
-  border-radius: 50%;
-}
-.circle-bottom-left{
-  width:140px;
-  height:140px;
-  background-color: rgba(255, 209, 6, 0.6);
-  border-top-right-radius:  100%;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-}
-
-.circle-right-top{
-  width:110px;
-  height:110px;
-  background-color: rgba(255, 209, 6, 0.5);
-  border-bottom-left-radius:  100%;
-  position: absolute;
-  top: 0;
-  right:0;
+.calendar{
+    margin-top:10px;
+    width: 320px;
+    height: 350px;
+    float: right;
 }
 </style>

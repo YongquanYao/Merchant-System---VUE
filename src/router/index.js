@@ -6,6 +6,7 @@ import comnpany from '../pages/company.vue'
 import cloud from '../pages/cloud.vue'
 import setting from '../pages/setting.vue'
 import table from '../pages/table.vue'
+import home from '../pages/home.vue'
 
 Vue.use(Router)
 
@@ -17,7 +18,7 @@ const routes = [
   {
     //Home page
     path: '/',
-    component: resolve => require(['../pages/home'], resolve),
+    component: resolve => require(['../pages/index'], resolve),
     meta: {
       title: 'home'
     }
@@ -27,6 +28,10 @@ const routes = [
     path:'/home',
     component: Layout,
     children: [
+      {
+        path:'/home',
+        component: home,
+      },
       {
         path:'/home/info',
         component: info

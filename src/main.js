@@ -19,7 +19,12 @@ import Notification from 'ant-design-vue/lib/notification';
 import Empty from 'ant-design-vue/lib/empty';
 import Checkbox from 'ant-design-vue/lib/checkbox';
 import Confirm from 'ant-design-vue/lib/modal/confirm'
-
+import Calendar from 'ant-design-vue/lib/calendar'
+import Row from 'ant-design-vue/lib/row'
+import Col from 'ant-design-vue/lib/col'
+import Divider from 'ant-design-vue/lib/divider'
+import Tag from 'ant-design-vue/lib/tag'
+import Tab from 'ant-design-vue/lib/tabs'
 
 
 Vue.use(Spin);
@@ -38,6 +43,13 @@ Vue.use(Notification);
 Vue.use(Menu);
 Vue.use(Empty);
 Vue.use(Checkbox);
+Vue.use(Calendar);
+Vue.use(Row);
+Vue.use(Col);
+Vue.use(Divider);
+Vue.use(Tag);
+Vue.use(Tab);
+
 
 
 

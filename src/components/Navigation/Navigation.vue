@@ -9,7 +9,7 @@
       </div>
       <a-menu theme="light" mode="inline" :defaultSelectedKeys="['1']">
         <a-menu-item key="1">
-          <router-link to='/home/info'>
+          <router-link to='/home'>
           <a-icon type="home"/>
           <span>Home</span>
           </router-link>
