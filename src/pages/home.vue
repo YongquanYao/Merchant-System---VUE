@@ -13,7 +13,7 @@
                 <div class="user_info">
                     <p>
                         <a-icon type="idcard" style="margin-right:8px" />
-                        xxx技术有限公司
+                        资深全栈开发工程师
                     </p>
                     <p>
                         <a-icon type="apartment" style="margin-right:8px"/>
@@ -60,17 +60,17 @@
           <a-col :span="17">
               <a-card class="tabList">
                 <a-tabs default-active-key="1" @change="callback">
-                    <a-tab-pane key="1" tab="消息 (0)">
+                    <a-tab-pane key="1" :tab="tab1">
                         <a-empty 
                             description="当前没有任何消息"
                         />
                     </a-tab-pane>
-                    <a-tab-pane key="2" tab="任务(0)" force-render>
+                    <a-tab-pane key="2" :tab="tab2" force-render>
                         <a-empty 
                             description="当前任务为空"
                         />
                     </a-tab-pane>
-                    <a-tab-pane key="3" tab="会议 / 项目 (0）">
+                    <a-tab-pane key="3" :tab="tab3">
                         <a-empty 
                             description="当前没有会议和项目记录"
                         />
@@ -95,7 +95,22 @@
                 username:'',
                 tagInputVisible: false,
                 tagInputValue: '',
-                newTag: null
+                newTag: null,
+                tab1: function(){
+                    return(
+                    <span> 消息 <span style="font-size: 13px" >(0)</span></span>
+                    )
+                },
+                tab2: function(){
+                    return(
+                    <span> 任务 <span style="font-size: 13px" >(0)</span></span>
+                    )
+                },
+                tab3: function(){
+                    return(
+                    <span> 会议 / 项目 <span style="font-size: 13px" >(0)</span></span>
+                    )
+                },
             }
         },
         methods:{
@@ -117,7 +132,7 @@
             },
             handleInputChange(e){
                 this.tagInputValue = e.target.value
-            }
+            },
         },
         created(){
             this.username = localStorage.getItem('username')

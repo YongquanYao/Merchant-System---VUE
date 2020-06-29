@@ -25,6 +25,7 @@ import Col from 'ant-design-vue/lib/col'
 import Divider from 'ant-design-vue/lib/divider'
 import Tag from 'ant-design-vue/lib/tag'
 import Tab from 'ant-design-vue/lib/tabs'
+import Descriptions from 'ant-design-vue/lib/descriptions'
 
 
 Vue.use(Spin);
@@ -49,7 +50,7 @@ Vue.use(Col);
 Vue.use(Divider);
 Vue.use(Tag);
 Vue.use(Tab);
-
+Vue.use(Descriptions);
 
 
 

@@ -67,8 +67,8 @@
     methods:{
       logout(){
         this.$confirm({
-          title: 'Are you sure to logout?',
-          content: <div style="color: orange;">this is a confirmation</div>,
+          title: <div style="color: orange;">Are you sure to logout</div>,
+          // content: <div style="color: orange;">this is a confirmation</div>,
           okText: 'Yes',
           okType: 'danger',
           cancelText: 'No',

@@ -56,7 +56,7 @@ export default {
         display: flex;
     }
     .logo{
-        margin-left:45px;
+        margin-left:60px;
         padding-right: 15px;
     }
     .left{
