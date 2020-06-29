@@ -10,6 +10,24 @@
             <router-link to='/home/info'><h1>{{title}}</h1></router-link>
         </div>
         <div class="right">
+            <a-select
+                v-if="searchMode"
+                show-search
+                :value="value"
+                placeholder="input search text"
+                style="width: 200px"
+                :default-active-first-option="false"
+                :show-arrow="false"
+                :filter-option="false"
+                :not-found-content="null"
+                @search="handleSearch"
+                @change="handleChange"
+            >
+                <a-select-option v-for="d in data" :key="d.value">
+                {{ d.text }}
+                </a-select-option>
+            </a-select>
+            <a-icon  v-if="!searchMode" class="search" type="search" @click="headerSearch" />
             <span class="time">{{time}}</span>
             <router-link to='/home/info'><a-avatar style="backgroundColor:#1890ff">{{initial}}</a-avatar></router-link>
             <!-- <span class="username">{{username}}</span> -->
@@ -29,7 +47,8 @@ export default {
         title: 'Merchant System',
         username: '',
         time: formateDate(Date.now()),
-        initial: ''
+        initial: '',
+        searchMode: false
       }
   },
   mounted(){
@@ -42,6 +61,11 @@ export default {
       this.username = localStorage.getItem('username')
       this.initial = localStorage.getItem('username').split('')[0]
 
+  },
+  methods:{
+      headerSearch(){
+          this.searchMode = true
+      }
   }
 }
 </script>
@@ -98,5 +122,8 @@ export default {
     }
     .right .username{
          font-size:16px;
+    }
+    .right .search:active{
+        color:rgb(24, 144, 255);
     }
 </style>

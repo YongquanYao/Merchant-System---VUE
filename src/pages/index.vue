@@ -162,28 +162,35 @@
                 if (err) {
                 return;
                 }
-                window.console.log('Received values of form: ', values);
-                form.resetFields();
-                this.visible = false;
 
                 // 把数据传到localStorage key的名字是username 
                 // 有json格式时需要JSON.stringify()转化为字符串
                 // localStorage.setItem('username',JSON.stringify(values.username));
-                localStorage.setItem('username',values.username);
-                localStorage.setItem('password',values.password);
-            });
-              // 跳转到主页
-                window.location.replace('/#/home')
-             // 提示
-                this.$message.success('login successfully');
-              // Notification pop up when enter the homepage  到主页后弹出简介
+
+                if (values.password === 'admin') {
+
+                    form.resetFields();
+                    this.visible = false;
+
+                    localStorage.setItem('username',values.username);
+                    localStorage.setItem('password',values.password);
+                    // 跳转到主页
+                    window.location.replace('/#/home')
+                    // 提示
+                    this.$message.success('login successfully');
+                    // Notification pop up when enter the homepage  到主页后弹出简介
                     this.$notification.open({
                         message: 'Introduction Notification',
-                        description:
-                            "Welcome to the Merchant System! You can View/Edit your personal and company information .",
-                            duration: 6,
+                        description: "Welcome to the Merchant System! You can View/Edit your personal and company information .",
+                        duration: 6,
                         icon: <a-icon type="smile" style="color: #108ee9" />,
-                        });
+                    });
+                }
+                else{
+                      this.$message.error('password incorrect');
+                }
+
+            });
          }
     },
 }

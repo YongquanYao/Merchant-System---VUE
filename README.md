@@ -24,7 +24,7 @@ yarn run build
 ```
 
 ## ------ Authorization --------  ##
-username/ Email : Admin
-password: admin
+username: any (自己定义)
+password: admin (固定)
 
 
