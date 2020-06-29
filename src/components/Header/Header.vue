@@ -89,6 +89,7 @@ export default {
         font-size: 14px;
         margin-right: 15px;
         font-weight: 500;
+        color: #555;
         /* color:#6db7fc; */
     }
     .right span{

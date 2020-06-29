@@ -7,42 +7,42 @@
          
         /><span v-show="span">Main menu</span>    
       </div>
-      <a-menu theme="light" mode="inline" :defaultSelectedKeys="['1']">
-        <a-menu-item key="1">
+      <a-menu theme="light" mode="inline" :defaultSelectedKeys="[this.key]">
+        <a-menu-item key="/home">
           <router-link to='/home'>
           <a-icon type="home"/>
           <span>Home</span>
           </router-link>
         </a-menu-item>
-        <a-menu-item key="2">
+        <a-menu-item key="/home/info">
           <router-link to='/home/info'>
           <a-icon type="user" />
             <span>User Interface</span>
           </router-link>
         </a-menu-item>
-        <a-menu-item key="3">
+        <a-menu-item key="/home/company'">
           <router-link to='/home/company'>
             <a-icon type="shop"/>
             <span>Company</span>
           </router-link>
         </a-menu-item>
-        <a-menu-item key="4">
+        <a-menu-item key="/home/table'">
           <router-link to='/home/table'>
             <a-icon type="table" />
             <span>Table</span>
               </router-link>
         </a-menu-item>
-        <a-menu-item key="5">
+        <a-menu-item key="/home/rise">
           <a-icon type="rise" />
           <span>Analysis</span>
         </a-menu-item>
-        <a-menu-item key="6">
+        <a-menu-item key="/home/cloud">
           <router-link to='/home/cloud'>
             <a-icon type="cloud" />
             <span>Cloud</span>
            </router-link>
         </a-menu-item>
-        <a-menu-item key="7">
+        <a-menu-item key="/home/setting">
           <router-link to='/home/setting'>
             <a-icon type="setting"/>
             <span>Setting</span>
@@ -62,7 +62,11 @@
       return{
         collapsed: false,
         span: true,
+        key: '/home',
       }
+    },
+    created(){
+      this.key = this.$router.history.current.path
     },
     methods:{
       logout(){
@@ -84,7 +88,6 @@
           }
         });
       }
-
     }
   }
 </script>
@@ -112,3 +115,5 @@
   cursor: pointer;
 }
 </style>
+
+

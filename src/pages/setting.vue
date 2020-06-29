@@ -1,21 +1,63 @@
 <template>
     <div>
-     <div class='card-one'>
-                 <a-card title="ACCOUNT SETTNIG">
-                     <!-- <a-avatar style="backgroundColor:#1890ff" icon="user" size="large"/> -->
-                     <div style="font-size: 20px; margin-bottom: 20px">
+     <div class='panelContainer'>
+                <a-card hoverable title="SETTING PANEL" class="panel">
+                    <img
+                    style="padding-top: 2px"
+                    slot="cover"
+                    alt="example"
+                    src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+                    />
+                    <template slot="actions" class="ant-card-actions">
+                    <a-icon key="setting" type="home" />
+                    <a-icon key="edit" type="edit" />
+                    <a-icon key="ellipsis" type="ellipsis" />
+                    </template>
+                    <a-card-meta>
+                        <template slot="title">
+                            <span>Hi, {{username}} !</span> 
+                        </template>
+                        <template slot="description">
+                            <span style="font-size: 13px">个人中心</span> 
+                        </template>
+                    <a-avatar
+                        slot="avatar"
+                        src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+                    />
+                    </a-card-meta>
+                    <a-divider dashed/>
+                    <div>
+                        <a-button type="link" @click="handleDetail">
+                        Account Basic Setting
+                        </a-button>
+                    </div>
+                    <div>
+                        <a-button type="link" @click="handlePassword">
+                        Private Security Setting
+                        </a-button>
+                    </div>
+                    <div>
+                        <a-button type="link" @click="handlePassword">
+                        Help?
+                        </a-button>
+                    </div>
+                </a-card>
+
+                 <!-- <a-card title="SETTNIG PANEL" class="panel">
+                     <a-avatar style="backgroundColor:#1890ff" icon="user" size="large"/>
+                     <div style="font-size: 17px; margin-bottom: 20px">
                         <span>Hi, {{username}}!</span> 
                     </div>
 
 
                     <a-divider dashed/>
                     <div>
-                        <a-button type="link" @click="handleDetail">
+                        <a-button  @click="handleDetail">
                         Change Account Detail
                         </a-button>
                     </div>
                     <div>
-                        <a-button type="link" @click="handlePassword">
+                        <a-button  @click="handlePassword">
                         Change Password
                         </a-button>
                     </div>
@@ -36,8 +78,8 @@
                         No. 18, Wantang Road, Xihu District, Hangzhou, Zhejiang, China
                         </a-descriptions-item>
                     </a-descriptions>
-                 </a-card>
-     </div>   
+                 </a-card> -->
+        </div>   
             <!-- <div>
                 <a-card class="calendar"> 
                     <a-calendar 
@@ -156,12 +198,18 @@
 </script>
 
 <style scoped>
-  .card-one{
+  .panelContainer{
     margin-top:40px;
     background-color: #f0f2f5;
     box-shadow: 0px 1px 10px 5px rgba(17,17,17,0.1);
     float: left;
-    width: 55%;
+    /* width: 20%;
+    height: 600px; */
+  }
+  .panelContainer .panel{
+      width: 300px;
+      height: 490px;
+      cursor: default;
   }
   .card-password, .card-detail{
     margin-top:40px;
