@@ -11,20 +11,28 @@
         </div>
         <div class="right">
             <a-select
+                class="headerSearch"
                 v-if="searchMode"
                 show-search
+                autoFocus
+                ref="Headersearch"
+                defaultValue="/home"
                 :value="value"
-                placeholder="input search text"
-                style="width: 200px"
+                style="width: 200px; padding-right:5px"
                 :default-active-first-option="false"
                 :show-arrow="false"
                 :filter-option="false"
                 :not-found-content="null"
                 @search="handleSearch"
                 @change="handleChange"
+                @blur="handleSearchConfirm"
+                @focus="handleFocus"
             >
-                <a-select-option v-for="d in data" :key="d.value">
-                {{ d.text }}
+            <template slot="placeholder">
+                 <a-icon type="search"/> search
+            </template>
+                <a-select-option v-for="item in serachList" :key="item.value">
+                    <router-link :to="item.value">{{ item.text }}</router-link>
                 </a-select-option>
             </a-select>
             <a-icon  v-if="!searchMode" class="search" type="search" @click="headerSearch" />
@@ -48,7 +56,21 @@ export default {
         username: '',
         time: formateDate(Date.now()),
         initial: '',
-        searchMode: false
+        searchMode: false,
+        serachList:[
+            {
+                value:'/home',
+                text: 'Home 模块'
+            },
+            {
+                value:'/home/info',
+                text: 'User 模块'
+            },
+            {
+                value:'/home/setting',
+                text: 'Setting 模块'
+            }
+        ]
       }
   },
   mounted(){
@@ -62,9 +84,23 @@ export default {
       this.initial = localStorage.getItem('username').split('')[0]
 
   },
+//   computed(){
+//        this.$refs.search.blur(() => {
+//             this.searchMode = false
+//        });
+//   },
   methods:{
       headerSearch(){
           this.searchMode = true
+          this.$nextTick(function() {
+                this.$refs.Headersearch.focus()
+          });
+      },
+      handleSearchConfirm(){
+           this.searchMode = false
+      },
+      handleSearch(){
+
       }
   }
 }
@@ -125,5 +161,8 @@ export default {
     }
     .right .search:active{
         color:rgb(24, 144, 255);
+    }
+    .headerSearch{
+        border: none;
     }
 </style>

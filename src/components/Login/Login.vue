@@ -10,6 +10,7 @@
         @ok="() => { $emit('create') }"
        -->
     <a-modal
+      width="500px"
       :maskClosable = false
       :keyboard = false 
       :visible="visible"
