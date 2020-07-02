@@ -3,16 +3,16 @@
         <div class='panelContainer'>
                     <a-card hoverable title="SETTING PANEL" class="panel">
                         <img
-                        style="padding-top: 2px"
+                        class="panelImg"
                         slot="cover"
-                        alt="example"
-                        src="../assets/image/avatar.png" 
+                        alt="test"
+                        src="../../public/img/avatar.jpg" 
                         />
                         <template slot="actions" class="ant-card-actions">
                         <router-link to="/home">
-                            <a-icon key="setting" type="home"/>
+                            <a-icon key="heart" type="heart"/>
                         </router-link>
-                        <a-icon key="edit" type="edit" />
+                        <a-icon key="email" type="mail" />
                         <a-icon key="ellipsis" type="ellipsis" />
                         </template>
                         <a-card-meta>
@@ -24,23 +24,25 @@
                             </template>
                         <a-avatar
                             slot="avatar"
-                            src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-                        />
+                            style="background-color: #fff; font-size: 17px"
+                        >
+                         👊
+                        </a-avatar>
                         </a-card-meta>
                         <a-divider dashed/>
                         <div>
                             <a-button type="link" @click="handleBasic">
-                            Account Basic Setting
+                             基本信息设置
                             </a-button>
                         </div>
                         <div>
                             <a-button type="link" @click="handlePassword">
-                            Private Security Setting
+                             安全信息设置
                             </a-button>
                         </div>
                         <div>
                             <a-button type="link" @click="handlePassword">
-                            Help?
+                             帮助？
                             </a-button>
                         </div>
                     </a-card>
@@ -108,28 +110,69 @@
                         {{username}}
                         </a-descriptions-item>
                         <a-descriptions-item label="Telephone">
-                        1810000000
+                        100000086
                         </a-descriptions-item>
                         <a-descriptions-item label="Live">
-                        Hangzhou, Zhejiang
+                        NewYork, NY
                         </a-descriptions-item>
                         <a-descriptions-item label="Remark">
                         empty
                         </a-descriptions-item>
                         <a-descriptions-item label="Address">
-                        No. 18, Wantang Road, Xihu District, Hangzhou, Zhejiang, China
+                        No. 18,  Wantang Road,  Long Island City,  NewYork,  USA
                         </a-descriptions-item>
                     </a-descriptions>
                  </a-card>
             </div>
         </transition>
+
+         <transition name="slide-fade">
+            <div class="card-security" v-show="cardtBasicShow"> 
+                 <a-card>
+                      <template slot="title">
+                        <span>Secutity Information</span>
+                        <span class="cardCLose" @click="basicCardClose"><a-icon size="small" type="close"/></span>
+                     </template>
+                    <a-list item-layout="horizontal" :data-source="data" style="height: 190px">
+                        <a-list-item slot="renderItem" slot-scope="item">
+                        <a-list-item-meta
+                            description="Ant Design, a design language">
+                            <a slot="title" href="https://www.antdv.com/">{{ item.title }}</a>
+                            <a-avatar
+                            slot="avatar"
+                            src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+                            />
+                        </a-list-item-meta>
+                        </a-list-item>
+                    </a-list>
+                         <!-- <a-list-item  slot="renderItem" >
+                            Account Password
+                            <div>Current password strength：Strong</div>
+                         </a-list-item>
+                         <a-list-item  slot="renderItem" >
+                            Security Phone
+                            <div>Bound phone：138****8293</div>
+                         </a-list-item>
+                         <a-list-item  slot="renderItem" >
+                            Security Question
+                            <div>The security question is not set, and the security policy can effectively protect the account security</div>
+                         </a-list-item>
+                         <a-list-item  slot="renderItem" >
+                             Backup Email
+                             Bound Email：
+                         </a-list-item> -->
+                 </a-card>
+            </div>
+        </transition>
+
+
         <a-modal 
             :visible="editInfo_Mode" 
             title="Edit" 
             @ok="handleOk"
             width="550px"
             @cancel="handleBasicCancel"
-        >
+            >
             <template slot="footer">
                 <a-button key="back" @click="handleBasicCancel">
                 Cancel
@@ -187,11 +230,21 @@
                         </a-form-item>
             </a-form>
         </a-modal> 
-        </div>
+    </div>
 </template>
 
 <script>
-    // import img from '../assets/image/avatar.JPG'
+    const data = [
+        {
+            title: 'Ant Design Title 1',
+        },
+        {
+            title: 'Ant Design Title 2',
+        },
+        {
+            title: 'Ant Design Title 3',
+        },
+    ];
     export default {
         data(){
             return {
@@ -207,6 +260,7 @@
                  xs: { span: 24},
                  sm: { span: 16},
               },
+              data
             }
         },
          beforeCreate() {
@@ -279,7 +333,14 @@
     background-color: #f0f2f5;
     box-shadow: 0px 1px 10px 5px rgba(17,17,17,0.1);
     float: right;
-    width:60%;
+    width:65%;
+  }
+  .card-security{
+    margin-top:40px;
+    background-color: #f0f2f5;
+    box-shadow: 0px 1px 10px 5px rgba(17,17,17,0.1);
+    float: right;
+    width:65%;
   }
   .slide-fade-enter-active {
   transition: all 0.4s ease;
@@ -310,5 +371,12 @@
     margin-left: 10px;
     color: #1890ff;
     cursor: pointer;
+}
+.panelImg{
+    padding-top: 4px; 
+    width: 180px; 
+    height:180px; 
+    margin: 0 auto;
+    border-radius: 50%;
 }
 </style>

@@ -27,6 +27,7 @@ import Tag from 'ant-design-vue/lib/tag'
 import Tab from 'ant-design-vue/lib/tabs'
 import Descriptions from 'ant-design-vue/lib/descriptions'
 import Select from 'ant-design-vue/lib/select'
+import List from 'ant-design-vue/lib/list'
 
 
 
@@ -54,6 +55,7 @@ Vue.use(Tag);
 Vue.use(Tab);
 Vue.use(Descriptions);
 Vue.use(Select);
+Vue.use(List);
 
 
 
