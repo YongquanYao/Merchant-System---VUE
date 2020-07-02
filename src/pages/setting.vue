@@ -6,10 +6,12 @@
                         style="padding-top: 2px"
                         slot="cover"
                         alt="example"
-                        src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+                        src="../assets/image/avatar.png" 
                         />
                         <template slot="actions" class="ant-card-actions">
-                        <a-icon key="setting" type="home" />
+                        <router-link to="/home">
+                            <a-icon key="setting" type="home"/>
+                        </router-link>
                         <a-icon key="edit" type="edit" />
                         <a-icon key="ellipsis" type="ellipsis" />
                         </template>
@@ -92,7 +94,7 @@
         </transition>   
 
         <transition name="slide-fade">
-            <div class="card-detail" v-show="cardtBasicShow">
+            <div class="card-detail" v-show="cardtBasicShow"> 
                  <a-card>
                       <template slot="title">
                         <span>Basic information</span>
@@ -121,7 +123,13 @@
                  </a-card>
             </div>
         </transition>
-        <a-modal :visible="editInfo_Mode" title="Title" on-ok="handleOk">
+        <a-modal 
+            :visible="editInfo_Mode" 
+            title="Edit" 
+            @ok="handleOk"
+            width="550px"
+            @cancel="handleBasicCancel"
+        >
             <template slot="footer">
                 <a-button key="back" @click="handleBasicCancel">
                 Cancel
@@ -130,38 +138,75 @@
                 Submit
                 </a-button>
             </template>
-             <a-form layout='vertical' :form="form" width="400">
-                        <a-form-item label= 'User name'>  
+             <a-form 
+                layout='vertical' 
+                :form="form" 
+                :label-col="labelCol" 
+                :wrapper-col="wrapperCol"
+                style="padding: 20px"
+                v-model="temp"
+            >
+                        <a-form-item label= 'User name: ' label-width="60">  
                             <a-input type ='text'
                                  v-decorator="['username',{rules: [{ required: true, message: 'Please input user name' }],
                                  }]">
                             <a-icon slot='prefix' type="user" style="color:rgba(0,0,0,.25)"/>
                             </a-input>
                         </a-form-item>
-                        <a-form-item label= 'Telephone'>  
-                            <a-input type = 'number' 
+                        <a-form-item label= 'Email: '>  
+                            <a-input type = 'email' 
+                                 v-decorator="['email',{rules: [{ required: true, message: 'Please input telephone' }],
+                                 }]">
+                            <a-icon slot='prefix' type="mail" style="color:rgba(0,0,0,.25)"/>
+                            </a-input>
+                        </a-form-item>
+                        <a-form-item label= 'Phone: '>  
+                            <a-input type = 'text' 
                                  v-decorator="['phone',{rules: [{ required: true, message: 'Please input telephone' }],
                                  }]">
                             <a-icon slot='prefix' type="phone" style="color:rgba(0,0,0,.25)"/>
                             </a-input>
                         </a-form-item>
-                        <!-- <a-form-item label= 'Current Password'>  
-                         
-                        </a-form-item> -->
+                        <a-form-item label= 'City: '>  
+                            <a-select 
+                                 v-decorator="['city',{rules: [{ required: true, message: 'Please select city' }],
+                                 }]"
+                                 placeholder="please select your city"
+                            >
+                            <a-icon slot='prefix' type="environment" style="color:rgba(0,0,0,.25)"/>
+                            <a-option>
+                                Guangzhou
+                            </a-option>
+                            </a-select>
+                        </a-form-item>
+                        <a-form-item label= 'Address: '>  
+                            <a-input type = 'textarea' 
+                                 v-decorator="['address']">
+                            <a-icon slot='prefix'  style="color:rgba(0,0,0,.25)"/>
+                            </a-input>
+                        </a-form-item>
             </a-form>
         </a-modal> 
         </div>
 </template>
 
 <script>
+    // import img from '../assets/image/avatar.JPG'
     export default {
-        
         data(){
             return {
               cardPasswordShow : false,
-              cardtBasicShow : false,
+              cardtBasicShow : true,
               username: localStorage.getItem('username'),
               editInfo_Mode: false,
+              labelCol: {
+                xs: { span: 24,offset: 15 },
+                sm: { span: 7, offset: 15 },
+              },
+              wrapperCol: {
+                 xs: { span: 24},
+                 sm: { span: 16},
+              },
             }
         },
          beforeCreate() {
@@ -203,7 +248,7 @@
             },
             handleBasicCancel(){
                 this.editInfo_Mode = false
-            }
+            },
         }
     }
 </script>
@@ -237,7 +282,7 @@
     width:60%;
   }
   .slide-fade-enter-active {
-  transition: all 0.5s ease;
+  transition: all 0.4s ease;
   }
   .slide-fade-leave-active {
   transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
