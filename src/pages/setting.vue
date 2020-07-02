@@ -60,21 +60,21 @@
                         <span class="cardCLose" @click="paswordCardClose"><a-icon size="small" type="close"/></span>
                      </template>
                     <a-form layout='vertical' :form="form">
-                        <a-form-item label= 'Change Password'>  
+                         <a-form-item label= 'Current Password'>  
                             <a-input-password type ='password' placeholder = 'Old Password'
                                  v-decorator="['password1',{rules: [{ required: true, message: 'Please input the old password' }],
                                  }]">
                             <a-icon slot='prefix' type="lock" style="color:rgba(0,0,0,.25)"/>
                             </a-input-password>
                         </a-form-item>
-                        <a-form-item>  
+                        <a-form-item label= 'New Password'>  
                             <a-input-password type = 'password' placeholder = 'New Password'
-                                 v-decorator="['password2',{rules: [{ validator: this.validatePwd}],
+                                 v-decorator="['password2',{rules: [{ required: true, message: 'Please input the new password' }],
                                  }]">
                             <a-icon slot='prefix' type="lock" style="color:rgba(0,0,0,.25)"/>
                             </a-input-password>
                         </a-form-item>
-                        <a-form-item>  
+                        <a-form-item label= 'Current Password'>  
                             <a-input-password type = 'password' placeholder = 'Confirm Password'
                                  v-decorator="['password3',{rules: [{ required: true, message: 'Please confirm the password' }],
                                  }]">
@@ -124,34 +124,30 @@
         <a-modal :visible="editInfo_Mode" title="Title" on-ok="handleOk">
             <template slot="footer">
                 <a-button key="back" @click="handleBasicCancel">
-                Return
+                Cancel
                 </a-button>
                 <a-button key="submit" type="primary" :loading="loading" @click="handleOk">
                 Submit
                 </a-button>
             </template>
-             <a-form layout='vertical' :form="form">
-                        <a-form-item label= 'Change Password'>  
-                            <a-input-password type ='password' placeholder = 'Old Password'
-                                 v-decorator="['password1',{rules: [{ required: true, message: 'Please input the old password' }],
+             <a-form layout='vertical' :form="form" width="400">
+                        <a-form-item label= 'User name'>  
+                            <a-input type ='text'
+                                 v-decorator="['username',{rules: [{ required: true, message: 'Please input user name' }],
                                  }]">
-                            <a-icon slot='prefix' type="lock" style="color:rgba(0,0,0,.25)"/>
-                            </a-input-password>
+                            <a-icon slot='prefix' type="user" style="color:rgba(0,0,0,.25)"/>
+                            </a-input>
                         </a-form-item>
-                        <a-form-item>  
-                            <a-input-password type = 'password' placeholder = 'New Password'
-                                 v-decorator="['password2',{rules: [{ required: true, message: 'Please input the new password' }],
+                        <a-form-item label= 'Telephone'>  
+                            <a-input type = 'number' 
+                                 v-decorator="['phone',{rules: [{ required: true, message: 'Please input telephone' }],
                                  }]">
-                            <a-icon slot='prefix' type="lock" style="color:rgba(0,0,0,.25)"/>
-                            </a-input-password>
+                            <a-icon slot='prefix' type="phone" style="color:rgba(0,0,0,.25)"/>
+                            </a-input>
                         </a-form-item>
-                        <a-form-item>  
-                            <a-input-password type = 'password' placeholder = 'Confirm Password'
-                                 v-decorator="['password3',{rules: [{ required: true, message: 'Please confirm the password' }],
-                                 }]">
-                            <a-icon slot='prefix' type="lock" style="color:rgba(0,0,0,.25)"/>
-                            </a-input-password>
-                        </a-form-item>
+                        <!-- <a-form-item label= 'Current Password'>  
+                         
+                        </a-form-item> -->
             </a-form>
         </a-modal> 
         </div>
@@ -241,7 +237,7 @@
     width:60%;
   }
   .slide-fade-enter-active {
-  transition: all 1s ease;
+  transition: all 0.5s ease;
   }
   .slide-fade-leave-active {
   transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
