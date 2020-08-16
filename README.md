@@ -1,6 +1,6 @@
- <div style="margin: 10px auto;">
+ <div align=center>
  <img width="200" height="200" src="https://github.com/YongquanYao/merchant-system-VueJS/blob/master/src/assets/image/vue.png"/>
- <span style="width:150px; height:150px"><b>+</b><span>
+ <span><b style="width:150px; height:150px; font-size:80px">+</b><span>
  <img width="200" height="200" src="https://github.com/YongquanYao/merchant-system-VueJS/blob/master/src/assets/image/ant%20design.png"/>
 </div>
   
