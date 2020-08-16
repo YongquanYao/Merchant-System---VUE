@@ -1,5 +1,9 @@
- ![image](https://github.com/YongquanYao/merchant-system-VueJS/blob/master/src/assets/image/vue.png)
- ![image](https://github.com/YongquanYao/merchant-system-VueJS/blob/master/src/assets/image/ant%20design.png)
+ <div style="margin: 10px auto;">
+ <img width="200" height="200" src="https://github.com/YongquanYao/merchant-system-VueJS/blob/master/src/assets/image/vue.png"/>
+ <span style="width:150px; height:150px"><b>+</b><span>
+ <img width="200" height="200" src="https://github.com/YongquanYao/merchant-system-VueJS/blob/master/src/assets/image/ant%20design.png"/>
+</div>
+  
 # Merchant System --- Yongquan(Raymond) Yao
 
 
