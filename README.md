@@ -1,6 +1,6 @@
  <p align=center>
    <img align="top" width="120" height="120" margin-right="150" src="https://github.com/YongquanYao/merchant-system-VueJS/blob/master/src/assets/image/vue.png"/>
-   <img  width="60" height="60" margin-right="50" src="https://github.com/YongquanYao/merchant-system-VueJS/blob/master/src/assets/image/plus.png"/>
+   <img  width="90" height="90" margin-right="50" src="https://github.com/YongquanYao/merchant-system-VueJS/blob/master/src/assets/image/plus.png"/>
    <img  align="top"width="120" height="120" src="https://github.com/YongquanYao/merchant-system-VueJS/blob/master/src/assets/image/ant%20design.png"/>
 </p>
 
