@@ -41,7 +41,7 @@
                             </a-button>
                         </div>
                         <div>
-                            <a-button type="link" @click="handlePassword">
+                            <a-button type="link" @click="handleHelp">
                              帮助？
                             </a-button>
                         </div>
@@ -133,17 +133,21 @@
                         <span>Secutity Information</span>
                         <span class="cardCLose" @click="basicCardClose"><a-icon size="small" type="close"/></span>
                      </template>
-                    <a-list item-layout="horizontal" :data-source="data" style="height: 190px">
+                    <a-list item-layout="horizontal" :data-source="SecurityTitle" style="height: 210px">
                         <a-list-item slot="renderItem" slot-scope="item">
-                        <a-list-item-meta
-                            description="Ant Design, a design language">
-                            <a slot="title" href="https://www.antdv.com/">{{ item.title }}</a>
-                            <a-avatar
-                            slot="avatar"
-                            src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-                            />
-                        </a-list-item-meta>
+                            <a-list-item-meta :description="item.des">
+                                <span slot="title" >{{ item.title }}</span>
+                            </a-list-item-meta>
+                            <!-- <a-button type="link">Modify</a-button> -->
                         </a-list-item>
+                        <!-- <a-list-item  slot="renderItem" >
+                            Account Password
+                            <div>Current password strength：Strong</div>
+                         </a-list-item>
+                         <a-list-item  slot="renderItem" >
+                            Security Question
+                            <div>The security question is not set, and the security policy can effectively protect the account security</div>
+                         </a-list-item> -->
                     </a-list>
                          <!-- <a-list-item  slot="renderItem" >
                             Account Password
@@ -234,34 +238,36 @@
 </template>
 
 <script>
-    const data = [
-        {
-            title: 'Ant Design Title 1',
-        },
-        {
-            title: 'Ant Design Title 2',
-        },
-        {
-            title: 'Ant Design Title 3',
-        },
-    ];
     export default {
         data(){
             return {
-              cardPasswordShow : false,
-              cardtBasicShow : true,
-              username: localStorage.getItem('username'),
-              editInfo_Mode: false,
-              labelCol: {
+                cardPasswordShow : false,
+                cardtBasicShow : true,
+                username: localStorage.getItem('username'),
+                editInfo_Mode: false,
+                labelCol: {
                 xs: { span: 24,offset: 15 },
                 sm: { span: 7, offset: 15 },
-              },
-              wrapperCol: {
-                 xs: { span: 24},
-                 sm: { span: 16},
-              },
-              data
-            }
+                },
+                wrapperCol: {
+                    xs: { span: 24},
+                    sm: { span: 16},
+                },
+                SecurityTitle: [
+                        {
+                            title: 'Account Password',
+                            des:'Current password strength：Strong'
+                        },
+                        {
+                            title: 'Security Question',
+                            des: 'The security question is not set, and the security policy can effectively protect the account security'
+                        },
+                        {
+                            title: 'Binding Account',
+                            des: 'You have binded with Github'
+                        },
+                ]
+            }   
         },
          beforeCreate() {
            this.form = this.$form.createForm(this, { name: 'changepassword' });
@@ -303,6 +309,9 @@
             handleBasicCancel(){
                 this.editInfo_Mode = false
             },
+            handleHelp(){
+                this.$message.warning('请联系rrraymond810@gmail.com !! 或者Github项目里提交issue反应~ 谢谢支持!', 5);
+            }
         }
     }
 </script>
@@ -336,17 +345,17 @@
     width:65%;
   }
   .card-security{
-    margin-top:40px;
+    margin-top:25px;
     background-color: #f0f2f5;
     box-shadow: 0px 1px 10px 5px rgba(17,17,17,0.1);
     float: right;
     width:65%;
   }
   .slide-fade-enter-active {
-  transition: all 0.4s ease;
+  transition: all 0.2s ease;
   }
   .slide-fade-leave-active {
-  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  transition: all 0.2s cubic-bezier(1.0, 0.5, 0.8, 1.0);
   }
   .slide-fade-enter, .slide-fade-leave-to {
   transform: translateX(10px);
