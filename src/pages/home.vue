@@ -58,17 +58,17 @@
                 <a-tabs default-active-key="1" @change="callback">
                     <a-tab-pane key="1" :tab="tab1">
                         <a-empty 
-                            description="当前没有任何消息"
+                            description="Message box is empty"
                         />
                     </a-tab-pane>
                     <a-tab-pane key="2" :tab="tab2" force-render>
                         <a-empty 
-                            description="当前任务为空"
+                            description="Task is empty"
                         />
                     </a-tab-pane>
                     <a-tab-pane key="3" :tab="tab3">
                         <a-empty 
-                            description="当前没有会议和项目记录"
+                            description="No meeting or project record"
                         />
                     </a-tab-pane>
                 </a-tabs>
@@ -142,17 +142,17 @@
                 newTag: null,
                 tab1: function(){
                     return(
-                    <span> 消息 <span style="font-size: 13px" >(0)</span></span>
+                    <span> Message <span style="font-size: 13px" >(0)</span></span>
                     )
                 },
                 tab2: function(){
                     return(
-                    <span> 任务 <span style="font-size: 13px" >(0)</span></span>
+                    <span> Task <span style="font-size: 13px" >(0)</span></span>
                     )
                 },
                 tab3: function(){
                     return(
-                    <span> 会议 / 项目 <span style="font-size: 13px" >(0)</span></span>
+                    <span> Meeting / Project <span style="font-size: 13px" >(0)</span></span>
                     )
                 },
                 deadline: new Date('September 24, 2020'),

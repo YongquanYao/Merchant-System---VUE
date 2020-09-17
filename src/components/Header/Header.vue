@@ -37,7 +37,7 @@
             </a-select>
             <a-icon  v-if="!searchMode" class="search" type="search" @click="headerSearch" />
             <span class="time">{{time}}</span>
-            <router-link to='/home/info'><a-avatar style="backgroundColor:#1890ff">{{initial}}</a-avatar></router-link>
+            <router-link to='/home/setting'><a-avatar style="backgroundColor:#1890ff">{{initial}}</a-avatar></router-link>
             <!-- <span class="username">{{username}}</span> -->
         </div>
     </div>

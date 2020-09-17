@@ -20,7 +20,7 @@
                                 <span>Hi, {{username}} !</span> 
                             </template>
                             <template slot="description">
-                                <span style="font-size: 13px">个人中心</span> 
+                                <span style="font-size: 13px">My Dashboard</span> 
                             </template>
                         <a-avatar
                             slot="avatar"
@@ -32,17 +32,17 @@
                         <a-divider dashed/>
                         <div>
                             <a-button type="link" @click="handleBasic">
-                             基本信息设置
+                             Basic Information Setting
                             </a-button>
                         </div>
                         <div>
                             <a-button type="link" @click="handlePassword">
-                             安全信息设置
+                             Security Information Setting
                             </a-button>
                         </div>
                         <div>
                             <a-button type="link" @click="handleHelp">
-                             帮助？
+                             Need help？
                             </a-button>
                         </div>
                     </a-card>
