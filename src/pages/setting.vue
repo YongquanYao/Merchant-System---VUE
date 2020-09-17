@@ -133,7 +133,7 @@
                         <span>Secutity Information</span>
                         <span class="cardCLose" @click="basicCardClose"><a-icon size="small" type="close"/></span>
                      </template>
-                    <a-list item-layout="horizontal" :data-source="SecurityTitle" style="height: 210px">
+                    <a-list item-layout="horizontal" :data-source="SecurityTitle" style="height: 211px">
                         <a-list-item slot="renderItem" slot-scope="item">
                             <a-list-item-meta :description="item.des">
                                 <span slot="title" >{{ item.title }}</span>
