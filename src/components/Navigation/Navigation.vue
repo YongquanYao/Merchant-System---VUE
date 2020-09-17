@@ -71,19 +71,13 @@
     methods:{
       logout(){
         this.$confirm({
-          title: <div>Notification</div>,
-          content: <div style="color: red;">Are you sure to logout ?</div>,
-          okText: 'Yes',
-          okType: 'primary',
-          cancelText: 'No',
+          title: 'Logout Notification',
+          content: 'Are you sure to logout ?',
+          okText: '确认',
+          cancelText: '取消',
           onOk(){
               window.location.replace('/')  
               localStorage.removeItem('username');
-              //发送ajax请求
-            //   return new Promise((resolve, reject) => {
-            //   setTimeout(Math.random() > 0.5 ? resolve : reject, 1000); 
-            //   //跳转回主页
-            // }).catch(() => window.console.log('Oops errors!'));
           }
         });
       }
