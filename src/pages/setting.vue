@@ -100,7 +100,7 @@
                  <a-card>
                       <template slot="title">
                         <span>Basic information</span>
-                        <span class="cardCLose" @click="basicCardClose"><a-icon size="small" type="close"/></span>
+                        <!-- <span class="cardCLose" @click="basicCardClose"><a-icon size="small" type="close"/></span> -->
                      </template>
                     <a-descriptions>
                         <template slot="title">
@@ -116,10 +116,10 @@
                         NewYork, NY
                         </a-descriptions-item>
                         <a-descriptions-item label="Remark">
-                        empty
+                        Full Stack
                         </a-descriptions-item>
                         <a-descriptions-item label="Address">
-                        No. 18,  Wantang Road,  Long Island City,  NewYork,  USA
+                        No. 18, Columbus,  Long Island City,  NewYork,  USA
                         </a-descriptions-item>
                     </a-descriptions>
                  </a-card>
@@ -131,7 +131,7 @@
                  <a-card>
                       <template slot="title">
                         <span>Secutity Information</span>
-                        <span class="cardCLose" @click="basicCardClose"><a-icon size="small" type="close"/></span>
+                        <!-- <span class="cardCLose" @click="basicCardClose"><a-icon size="small" type="close"/></span> -->
                      </template>
                     <a-list item-layout="horizontal" :data-source="SecurityTitle" style="height: 211px">
                         <a-list-item slot="renderItem" slot-scope="item">
@@ -382,9 +382,9 @@
     cursor: pointer;
 }
 .panelImg{
-    padding-top: 4px; 
-    width: 180px; 
-    height:180px; 
+    padding-top: 4px;
+    width: 155px; 
+    height:155px; 
     margin: 0 auto;
     border-radius: 50%;
 }
