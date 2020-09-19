@@ -32,9 +32,11 @@
             <span>Table</span>
               </router-link>
         </a-menu-item>
-        <a-menu-item key="/home/rise">
+        <a-menu-item key="/home/analysis">
+          <router-link to='/home/analysis'>
           <a-icon type="rise" />
-          <span>Analysis</span>
+            <span>Analysis</span>
+          </router-link>
         </a-menu-item>
         <a-menu-item key="/home/cloud">
           <router-link to='/home/cloud'>

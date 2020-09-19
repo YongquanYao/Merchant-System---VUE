@@ -7,6 +7,7 @@ import cloud from '../pages/cloud.vue'
 import setting from '../pages/setting.vue'
 import table from '../pages/table.vue'
 import home from '../pages/home.vue'
+import analysis from '../pages/analysis.vue'
 
 Vue.use(Router)
 
@@ -44,6 +45,11 @@ const routes = [
         // merchant's companys info
         path:'/home/table',
         component: table
+      },
+      {
+        // merchant's companys info
+        path:'/home/analysis',
+        component: analysis
       },
       {
         // merchant's companys info
