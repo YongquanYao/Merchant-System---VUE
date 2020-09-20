@@ -1,9 +1,34 @@
 <template>
-        <div class="content">
-            <a-card style="height: 300px">
+        <div>
+        <div class="content"> 
+            <a-card class="filter-card">
+                <div >
+                    <a-form :form="form" :label-col="{ span:5 }" :wrapper-col="{ span: 16 }" style="display:flex;" >
+                        <a-form-item label="Name"><a-input class="filter-input" placeholder="input name"></a-input>
+                        </a-form-item>
+                        <a-form-item label="Age"><a-input class="filter-input" placeholder="input age"></a-input>
+                        </a-form-item>
+                        <a-form-item label="Address"><a-input class="filter-input" placeholder="input address"></a-input>
+                        </a-form-item>
+                        <a-form-item :wrapper-col="{offset: 1 }">
+                            <a-button type="primary" style="width:100px "  html-type="submit">
+                                Search
+                            </a-button>
+                        </a-form-item>
+                        <a-form-item :wrapper-col="{  offset: 12 }">
+                            <a-button type="info" >
+                                Clear
+                            </a-button>
+                        </a-form-item>
+                    </a-form>
+                </div>
+            </a-card>
+        </div>
+        <div>
+            <a-card class="table-card">
                 <div>
-                    <a-button class="editable-add-btn" @click="handleAdd">
-                    Add
+                    <a-button class="addbtn" @click="handleAdd">
+                        aaa 
                     </a-button>
                     <a-table bordered :data-source="dataSource" :columns="columns">
                     <!-- <template slot="name" slot-scope="text, record">
@@ -21,6 +46,7 @@
                     </a-table>
                 </div>
             </a-card>
+        </div>
         </div>
 </template>
 
@@ -70,9 +96,21 @@
 </script>
 
 <style scoped>
-  .content{
+.content{
     margin-top:40px;
     background-color: #fff;
-    box-shadow: 0px 1px 10px 5px rgba(17,17,17,0.1);
-  }
+    /* box-shadow: 0px 1px 10px 5px rgba(17,17,17,0.1); */
+}
+.filter-card{
+    height: 100px;
+    display: flex;
+}
+.table-card{
+    margin-top: 20px;
+    height: 430px;
+}
+.filter-input{
+    width: 200px;
+    margin-right:45px;
+}
 </style>

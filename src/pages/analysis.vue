@@ -67,28 +67,32 @@
                 bubbledata: null,
                 piedata: null,
                 radardata: null,
-                
+                today: '',
+                yesterday: '',
                 columns:[
+                     {
+                        title: 'Date',
+                        dataIndex: 'date',
+                        key: 'date',
+                        scopedSlots: { customRender: 'date' },
+                    },
                     {
                         title: 'One',
                         dataIndex: 'one',
                         key: 'one',
                         scopedSlots: { customRender: 'one' },
-                        sorter: true,
                     },
                     {
                         title: 'Two',
                         dataIndex: 'two',
                         key: 'two',
                         scopedSlots: { customRender: 'two' },
-                        sorter: true,
                     },
                     {
                         title: 'Three',
                         dataIndex: 'three',
                         key: 'three',
                         scopedSlots: { customRender: 'three' },
-                        sorter: true,
                     },
                 ],
                 tabledata: null,
@@ -98,6 +102,7 @@
             }
         },
         mounted () {
+            this.getDate()
             this.fillData()
             this.chartPlay()
         },
@@ -213,12 +218,14 @@
                 this.tabledata = [
                     {
                         key: 'one',
+                        date: this.yesterday,
                         one: this.getRandomInt(),
                         two: this.getRandomInt(),
                         three: this.getRandomInt(),
                     },
                     {
                         key: 'two',
+                        date: this.today,
                         one: this.getRandomInt(),
                         two: this.getRandomInt(),
                         three: this.getRandomInt(),
@@ -227,6 +234,14 @@
             },
             getRandomInt () {
                 return Math.floor(Math.random() * (50 - 5 + 1)) + 5
+            },
+            getDate(){
+                const d = new Date()
+                const y = d.getFullYear()
+                const m  = d.getMonth() + 1
+                const date = d.getDate()
+                this.today = `${y}-${m}-${date}`
+                this.yesterday = `${y}-${m}-${date -1}`
             },
             chartPlay(){
                 this.interval
