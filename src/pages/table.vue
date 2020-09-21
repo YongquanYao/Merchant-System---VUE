@@ -3,19 +3,19 @@
         <div class="content"> 
             <a-card class="filter-card">
                 <div >
-                    <a-form :form="form" :label-col="{ span:5 }" :wrapper-col="{ span: 16 }" style="display:flex;" >
+                    <a-form :form="form" :label-col="{ span:5 }" :wrapper-col="{ span: 14 }" style="display:flex;" >
                         <a-form-item label="Name"><a-input class="filter-input" placeholder="input name"></a-input>
                         </a-form-item>
                         <a-form-item label="Age"><a-input class="filter-input" placeholder="input age"></a-input>
                         </a-form-item>
-                        <a-form-item label="Address"><a-input class="filter-input" placeholder="input address"></a-input>
+                        <a-form-item :label-col="{ span:7 }" label="Address"><a-input class="filter-input" placeholder="input address"></a-input>
                         </a-form-item>
-                        <a-form-item :wrapper-col="{offset: 1 }">
-                            <a-button type="primary" style="width:100px "  html-type="submit">
-                                Search
+                        <a-form-item >
+                            <a-button type="primary" class="search-btn"  html-type="submit">
+                               <a-icon type="search" /> Search
                             </a-button>
                         </a-form-item>
-                        <a-form-item :wrapper-col="{  offset: 12 }">
+                        <a-form-item :wrapper-col="{  offset: 2 }">
                             <a-button type="info" >
                                 Clear
                             </a-button>
@@ -27,8 +27,8 @@
         <div>
             <a-card class="table-card">
                 <div>
-                    <a-button class="addbtn" @click="handleAdd">
-                        aaa 
+                    <a-button class="addbtn" type="primary" @click="handleAdd">
+                       <a-icon type="plus" /> Add 
                     </a-button>
                     <a-table bordered :data-source="dataSource" :columns="columns">
                     <!-- <template slot="name" slot-scope="text, record">
@@ -54,16 +54,17 @@
     export default {
         data(){
             return{
+                username: '',
                 dataSource: [
                     {
                         key: '0',
-                        name: 'Edward King 0',
+                        name: `${this.username}0`,
                         age: '32',
                         address: 'London, Park Lane no. 0',
                     },
                     {
                         key: '1',
-                        name: 'Edward King 1',
+                        name: `${this.username}1`,
                         age: '32',
                         address: 'London, Park Lane no. 1',
                     },
@@ -71,26 +72,29 @@
                 // count: 2,
                 columns: [
                     {
-                        title: 'name',
+                        title: 'Name',
                         dataIndex: 'name',
                         width: '30%',
                         scopedSlots: { customRender: 'name' },
                     },
                     {
-                    title: 'age',
-                    dataIndex: 'age',
+                        title: 'Age',
+                        dataIndex: 'age',
                     },
                     {
-                    title: 'address',
-                    dataIndex: 'address',
+                        title: 'Address',
+                        dataIndex: 'address',
                     },
                     {
-                    title: 'operation',
-                    dataIndex: 'operation',
-                    scopedSlots: { customRender: 'operation' },
+                        title: 'Operation',
+                        dataIndex: 'operation',
+                        scopedSlots: { customRender: 'operation' },
                     },
                 ],
             }
+        },
+        mounted(){
+             this.username = localStorage.getItem('username')
         }
     }
 </script>
@@ -110,7 +114,14 @@
     height: 430px;
 }
 .filter-input{
-    width: 200px;
+    width: 220px;
     margin-right:45px;
+}
+.addbtn{
+    float: right;
+    margin-bottom: 10px;
+}
+.search-btn{
+    width: 95px;
 }
 </style>
