@@ -269,7 +269,7 @@
                 ]
             }   
         },
-         beforeCreate() {
+        beforeCreate() {
            this.form = this.$form.createForm(this, { name: 'changepassword' });
         },
         created(){
