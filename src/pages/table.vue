@@ -4,19 +4,19 @@
                 <a-card class="filter-card">
                     <div >
                         <a-form :form="filterform" :label-col="{ span:5 }" :wrapper-col="{ span: 14 }" style="display:flex;" >
-                            <a-form-item label="Name"><a-input class="filter-input" placeholder="input name"></a-input>
+                            <a-form-item label="Name"><a-input v-model="searchQuery.name" class="filter-input" placeholder="input name"></a-input>
                             </a-form-item>
-                            <a-form-item label="Age"><a-input class="filter-input" placeholder="input age"></a-input>
+                            <a-form-item label="Age"><a-input  v-model="searchQuery.age"    class="filter-input" placeholder="input age"></a-input>
                             </a-form-item>
-                            <a-form-item :label-col="{ span:7 }" label="Address"><a-input class="filter-input" placeholder="input address"></a-input>
+                            <a-form-item :label-col="{ span:7 }" label="Address"><a-input  v-model="searchQuery.address" class="filter-input" placeholder="input address"></a-input>
                             </a-form-item>
                             <a-form-item>
-                                <a-button type="primary" class="search-btn"  html-type="submit">
+                                <a-button type="primary" class="search-btn"  @click="handleFilterSearch">
                                 <a-icon type="search" /> Search
                                 </a-button>
                             </a-form-item>
                             <a-form-item :wrapper-col="{  offset: 2 }">
-                                <a-button type="info" >
+                                <a-button type="info" @click="handleFilterReset">
                                     Clear
                                 </a-button>
                             </a-form-item>
@@ -54,7 +54,7 @@
                             <template slot="title">
                                {{`Sure to delete ${record.name} ?`}}
                             </template>
-                            <a href="javascript:;">Delete</a>
+                            <a-button type="link">Delete</a-button>
                             </a-popconfirm>
                         </template>
                         </a-table>
@@ -86,15 +86,15 @@
                     v-model="add_temp"
                 >
                             <a-form-item label= 'User name: ' label-width="60">  
-                                <a-input type ='text'
-                                    v-decorator="['username',{rules: [{ required: true, message: 'Please input user name' }],
+                                <a-input type ='text' 
+                                    v-decorator="['name',{rules: [{ required: true, message: 'Please input user name' }],
                                     }]"  placeholder="please input username">
                                 <a-icon slot='prefix' type="user" style="color:rgba(0,0,0,.25)"/>
                                 </a-input>
                             </a-form-item>
                             <a-form-item label= 'Age: '>  
                                 <a-input type = 'number' 
-                                    v-decorator="['number',{rules: [{ required: true, message: 'Please input age' }],
+                                    v-decorator="['age',{rules: [{ required: true, message: 'Please input age' }],
                                     }]" placeholder="please input age">
                                 <a-icon slot='prefix' type="number" style="color:rgba(0,0,0,.25)"/>
                                 </a-input>
@@ -113,16 +113,16 @@
                                     placeholder="please select status"
                                 >
                                 <a-icon slot='prefix' type="status" style="color:rgba(0,0,0,.25)"/>
-                                <a-select-option value="0">
+                                <a-select-option :value="0">
                                     Normal
                                 </a-select-option>
-                                <a-select-option value="1">
+                                <a-select-option :value="1">
                                     Frozen
                                 </a-select-option>
                                 </a-select>
                             </a-form-item>
                             <a-form-item label= 'Note: '>  
-                                <a-input type = 'textarea' 
+                                <a-input type = 'textarea'
                                     v-decorator="['note']"
                                     placeholder="please input somes notes"
                                 >
@@ -201,6 +201,9 @@
     export default {
         data(){
             return{
+                createform : this.$form.createForm(this, { name: 'addData' }),
+                editform : this.$form.createForm(this, { name: 'editform' }),
+                filterform : this.$form.createForm(this, { name: 'filterform' }),
                 username: '',
                 tableLoading: true,
                 add_temp: {},
@@ -225,14 +228,14 @@
                         note: 'https://github.com/YongquanYao/merchant-system-VueJS'
                     },
                     {
-                        key: '1',
+                        key: 1,
                         name: this.getName('2'),
                         age: '33',
                         address: 'California, Silicon Valley No.333',
                         status: 1
                     },
                     {
-                        key: '2',
+                        key: 2,
                         name: this.getName('3'),
                         age: '44',
                         address: 'California, Silicon Valley No.444',
@@ -262,22 +265,18 @@
                     },
                 ],
                 searchQuery: {
-                    name: '',
-                    age: null,
-                    address: '',
-                    status: null
+                    name: undefined,
+                    age: undefined,
+                    address: undefined,
+                    status: undefined
                 },
                 paginationConfig: {
                     defaultPageSize: 4,
                 },
                 editLoading: false,
                 addLoading: false,
+                beforeFilterSource:[]
             }
-        },
-        beforeCreate() {
-           this.createform = this.$form.createForm(this, { name: 'addData' });
-           this.editform = this.$form.createForm(this, { name: 'editform' });
-           this.filterform = this.$form.createForm(this, { name: 'filterform' });
         },
         created(){
             this.getTableData()
@@ -307,11 +306,78 @@
             handleEditCancel(){
                 this.edit_mode = false
             },
-            handleEditOk(){
-
+            handleAddOk(e){
+                e.preventDefault();
+                this.createform.validateFields((error, value) => {
+                    if(error === null) {
+                        this.addLoading = true
+                        setTimeout(() => {
+                            value.key = this.dataSource[this.dataSource.length-1].key+1
+                            this.dataSource.push(value)
+                            this.add_mode = false
+                            this.$message.success('添加成功', 4);
+                              this.addLoading = false
+                        }, 1500)
+                    }else{
+                        this.$message.error('信息不全', 2);
+                    }
+                });
             },
-            handleAddOk(){
-
+            handleEditOk(){
+                this.editLoading = true
+                for(const i of this.dataSource) {
+                    if(this.edit_temp.key === i.key) {
+                        const index = this.dataSource.indexOf(i)
+                        this.dataSource.splice(index,1, this.edit_temp)
+                        break
+                    }
+                }
+                setTimeout(() => {
+                    this.edit_mode = false
+                    this.editLoading = false
+                    this.$message.success('修改成功', 4);
+                },2000)
+            },
+            handleFilterReset(){
+                this.searchQuery.name = undefined
+                this.searchQuery.age = undefined
+                this.searchQuery.address = undefined
+                this.tableLoading = true
+                setTimeout(()=>{
+                    this.tableLoading = false   
+                }, 1500)
+                if(this.beforeFilterSource.length !==0) {
+                    this.dataSource = this.beforeFilterSource
+                }
+            },
+            handleFilterSearch(){
+                this.tableLoading = true
+                this.beforeFilterSource = this.dataSource
+                let newDataSource  = new Array()
+                for (const i of this.dataSource) {
+                    if (this.searchQuery.name !== undefined && i.name === this.searchQuery.name){
+                        newDataSource.push(i)
+                    }
+                    else if (this.searchQuery.age !== undefined && i.age === this.searchQuery.age){
+                        newDataSource.push(i)
+                    }
+                    else if (this.searchQuery.address !== undefined && i.address === this.searchQuery.address){
+                        newDataSource.push(i)
+                    }
+                }
+                setTimeout(()=> {
+                    this.tableLoading = false
+                    this.dataSource = newDataSource
+                },2000)
+            },
+            onDelete(key){
+                for (const i of this.dataSource) {
+                    if(i.key === key) {
+                        const index = this.dataSource.indexOf(i)
+                        this.dataSource.splice(index,1)
+                        break
+                    }
+                }
             }
         }
     }
