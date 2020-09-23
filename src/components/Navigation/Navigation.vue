@@ -20,13 +20,13 @@
             <span>User Interface</span>
           </router-link>
         </a-menu-item>
-        <a-menu-item key="/home/company'">
+        <a-menu-item key="/home/company">
           <router-link to='/home/company'>
             <a-icon type="shop"/>
             <span>Company</span>
           </router-link>
         </a-menu-item>
-        <a-menu-item key="/home/table'">
+        <a-menu-item key="/home/table">
           <router-link to='/home/table'>
             <a-icon type="table" />
             <span>Table</span>
