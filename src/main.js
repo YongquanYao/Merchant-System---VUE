@@ -30,7 +30,7 @@ import Select from 'ant-design-vue/lib/select'
 import List from 'ant-design-vue/lib/list'
 import Statistic from 'ant-design-vue/lib/statistic'
 import Progress from 'ant-design-vue/lib/progress'
-
+import axios from 'axios'
 
 
 Vue.use(Spin);
@@ -61,15 +61,13 @@ Vue.use(List);
 Vue.use(Statistic);
 Vue.use(Progress);
 
-
-
-
 Vue.config.productionTip = false
 Vue.prototype.$message = Message;
 Vue.prototype.$notification = Notification;
 //use in script JS
 Vue.prototype.$confirm = Confirm;
-
+// console.log(process.env.VUE_APP_BASE_API)
+console.log(process.env.NODE_ENV )
 new Vue({
   router,
   render: h => h(App),

@@ -2,7 +2,7 @@ import request from '../utils/request'
 
 export function getGithubUser(name){
     return request({
-        url: `https://api.github.com/user/${name}`,
+        url: `/github/users/${name}`,
         method: 'get',
     })
 }
