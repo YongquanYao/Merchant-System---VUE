@@ -5,7 +5,7 @@
           class="trigger"
           :type="collapsed ? 'menu-unfold' : 'menu-fold'"
          
-        /><span v-show="span">Main menu</span>    
+        /><span v-show="span" style="color:#555">Main Menu</span>    
       </div>
       <a-menu theme="light" mode="inline" :defaultSelectedKeys="[this.key]">
         <a-menu-item key="/home">
