@@ -6,7 +6,7 @@
                         class="panelImg"
                         slot="cover"
                         alt="test"
-                        src="../../public/img/avatar.jpg" 
+                        src="https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png" 
                         />
                         <template slot="actions" class="ant-card-actions">
                         <router-link to="/home">
@@ -104,7 +104,7 @@
                      </template>
                     <a-descriptions>
                         <template slot="title">
-                            <span>User Info</span><a-icon class="infoEdit" @click="clickEdit" key="edit" type="edit" />
+                            <span>User Info</span><a-icon class="infoEdit" @click="clickEdit" key="edit" type="edit" /><span style="font-size:10px">edit</span>
                         </template>
                         <a-descriptions-item label="UserName">
                         {{username}}
@@ -382,10 +382,10 @@
     cursor: pointer;
 }
 .panelImg{
-    padding-top: 4px;
-    width: 155px; 
-    height:155px; 
-    margin: 0 auto;
+    padding-top: 0px;
+    width: 135px; 
+    height:135px; 
+    margin: 10px auto;
     border-radius: 50%;
 }
 </style>

@@ -155,7 +155,7 @@
                     <span> Meeting / Project <span style="font-size: 13px" >(0)</span></span>
                     )
                 },
-                deadline: new Date('September 24, 2020'),
+                deadline: new Date('Octorber 1, 2020'),
                 progress: '37%'
             }
         },
